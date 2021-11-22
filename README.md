@@ -1,0 +1,2 @@
+# CocosCreator-Scaffold
+CocosCreator简易的PureMVC开发框架
