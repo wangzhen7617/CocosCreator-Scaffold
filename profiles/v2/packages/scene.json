@@ -1,0 +1,40 @@
+{
+  "gizmos-infos": {
+    "is2D": true,
+    "is3DIcon": false,
+    "iconSize": 2,
+    "gridVisible": true,
+    "gridColor": [
+      150,
+      150,
+      150,
+      255
+    ],
+    "isIconGizmo3D": false,
+    "iconGizmoSize": 2,
+    "isGridVisible": true
+  },
+  "camera-infos": {
+    "f46876e4-e81b-4931-b493-6d367be385e7": {
+      "position": {
+        "x": 80.5255,
+        "y": 80.5255,
+        "z": 80.5255
+      },
+      "rotation": {
+        "x": -0.21375357879107565,
+        "y": 0.1510606172337218,
+        "z": 0.03347548631096403,
+        "w": 0.9645566283485998
+      },
+      "viewCenter": {
+        "x": 41.87690027003544,
+        "y": 21.602017250587807,
+        "z": -39.83802175947126
+      }
+    }
+  },
+  "camera-uuids": [
+    "f46876e4-e81b-4931-b493-6d367be385e7"
+  ]
+}

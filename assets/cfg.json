@@ -1,0 +1,21 @@
+{
+    "Game": [
+        {
+            "packageNick": "",
+            "preAssets": "0",
+            "packageName": "login"
+        },
+        {
+            "packageNick": "大厅",
+            "preAssets": "0",
+            "packageName": "hall"
+        },
+        {
+            "packageNick": "游戏",
+            "preAssets": "0",
+            "packageName": "battle"
+        }
+    ],
+    
+    "webUrl": "https://service.qianjiangby.com/_front/pro-qjby.php"
+}
