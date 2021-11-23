@@ -2,6 +2,7 @@
 import { _decorator, Component, Node, instantiate, Widget, warn, resources, tween, isValid, log, game } from 'cc';
 import { GlobalParams } from '../Data/GlobalParams';
 import { ModuleEventType } from '../Data/ModuleEventType';
+import { AssetsMgr } from '../Mgr/AssetsMgr';
 import { UIMgr } from '../Mgr/UIMgr';
 import { Stack } from '../Utils/Stack';
 import { Dispatcher } from './Dispatcher';
@@ -80,7 +81,7 @@ export class Module extends Node {
     private onPushView(data: any): void {
         // warn('onPushView', data);
         if (data.load) {
-            this.loadView(data.uiName, (err, res) => {
+            AssetsMgr.loadView(data.uiName, (err, res) => {
                 this.pushView(data.uiName, data.showAnimation, data.disposeTop, data.hideTop, data.data);
             });
         } else {
@@ -234,7 +235,7 @@ export class Module extends Node {
                     .call(() => {
                         oldUI.destroy();
                         if (release) {
-                            this.releaseView(oldUI.name);
+                            AssetsMgr.releaseView(oldUI.name);
                         }
                         this.dispatcher.emit(ModuleEventType.MODULE_POP_COMPLETE);
                         if (topUI == null) {
@@ -246,7 +247,7 @@ export class Module extends Node {
             } else {
                 oldUI.destroy();
                 if (release) {
-                    this.releaseView(oldUI.name);
+                    AssetsMgr.releaseView(oldUI.name);
                 }
                 this.dispatcher.emit(ModuleEventType.MODULE_POP_COMPLETE);
                 if (topUI == null) {
@@ -291,22 +292,7 @@ export class Module extends Node {
         return true;
     }
 
-    private loadView(name: string, cb: (_err: Error, _res: any) => void): void {
-        UIMgr.showLoading('加载中');
-        cc.loader.loadRes(`prefabs/${name}`, cc.Prefab, (err: Error, res: any) => {
-            AlertManager.hideLoading();
-            if (err) {
-                AlertManager.showTips('加载失败，请稍后重试');
-                cb(err, null);
-                return;
-            }
-            cb(null, res);
-        });
-    }
-    // add 释放view的所有引用资源
-    private releaseView(name: string): void {
-        if (!cc.sys.isNative) cc.loader.release(cc.loader.getDependsRecursively(`prefabs/${name}`));
-    }
+
 }
 
 /**

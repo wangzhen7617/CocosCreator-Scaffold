@@ -1,9 +1,9 @@
 {
     "Game": [
         {
-            "packageNick": "",
-            "preAssets": "0",
-            "packageName": "login"
+            "packageNick": "初始化",
+            "preAssets": "'prefabs/MaskUI', 'prefabs/AlertViewUI', 'prefabs/LoadingViewUI', 'prefabs/TipsViewUI', 'prefabs/HotUpdateViewUI', 'prefabs/ReconnectViewUI'",
+            "packageName": "start"
         },
         {
             "packageNick": "大厅",
@@ -16,6 +16,6 @@
             "packageName": "battle"
         }
     ],
-    
+
     "webUrl": "https://service.qianjiangby.com/_front/pro-qjby.php"
 }

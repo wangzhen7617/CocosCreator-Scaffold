@@ -1,8 +1,9 @@
 
-import { _decorator, Component, Node, log } from 'cc';
+import { _decorator, Component, Node, log, resources, Prefab, AssetManager, assetManager } from 'cc';
 import { GameType } from '../Data/GameType';
 import { Module } from '../MVC/Module';
 import { AlertMgr } from './AlertMgr';
+import { UIMgr } from './UIMgr';
 const { ccclass, property } = _decorator;
 
 /**
@@ -43,7 +44,7 @@ export class AssetsMgr extends Component {
 
     public static init(callBack: (this: void) => void): void {
         //预制体
-        this.gameAssets[GameType.Start] = ['prefabs/MaskUI', 'prefabs/AlertViewUI', 'prefabs/LoadingViewUI', 'prefabs/TipsViewUI', 'prefabs/HotUpdateViewUI', 'prefabs/ReconnectViewUI'];
+        this.gameAssets[GameType.Start] = [];
         this.moduleAtlasNames[GameType.Start] = [];
         this.modulePicNames[GameType.Start] = [];
 
@@ -209,6 +210,28 @@ export class AssetsMgr extends Component {
         } else {
             return this.loadedPics['textures/' + name];
         }
+    }
+
+
+
+
+    public static loadView(name: string, cb: (_err: Error, _res: any) => void): void {
+        UIMgr.showLoading('加载资源中');
+        resources.load(`prefabs/${name}`, Prefab, (err: Error, res: any) => {
+            UIMgr.hideLoading();
+            if (err) {
+                cb(err, null);
+                return;
+            }
+            cb(null, res);
+        });
+    }
+    public static releaseView(name: string): void {
+        log("assets start: ", assetManager.assets)
+        resources.release(`prefabs/${name}`)
+        log("assets end: ", assetManager.assets)
+
+        //  cc.loader.release(cc.loader.getDependsRecursively(`prefabs/${name}`));
     }
 
 }

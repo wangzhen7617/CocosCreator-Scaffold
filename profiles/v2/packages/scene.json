@@ -36,5 +36,18 @@
   },
   "camera-uuids": [
     "f46876e4-e81b-4931-b493-6d367be385e7"
-  ]
+  ],
+  "float-window": {
+    "position": {
+      "cc": {
+        "Camera": {
+          "dock": false,
+          "top": null,
+          "bottom": 10,
+          "left": null,
+          "right": 10
+        }
+      }
+    }
+  }
 }

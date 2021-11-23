@@ -1,12 +1,14 @@
 
-import { _decorator, Component, Node, view } from 'cc';
+import { _decorator, Component, Node, view, log } from 'cc';
+import { BaseInterface } from '../../../Core/Base/BaseInterface';
+import { BaseScene } from '../../../Core/Base/BaseScene';
 import { GlobalParams } from '../../../Core/Data/GlobalParams';
 import { ModuleType } from '../../../Core/Data/ModuleType';
 import { AssetsMgr } from '../../../Core/Mgr/AssetsMgr';
 import { UIMgr } from '../../../Core/Mgr/UIMgr';
 import { AppFacade } from '../../../Core/MVC/AppFacade';
 import { HotUpdateMediator } from '../../Hotupdate/HotUpdateMediator';
-import { HotUpdateProxy } from '../../Hotupdate/HotupdateProxy';
+import { HotUpdateProxy } from '../../Hotupdate/HotUpdateProxy';
 import { SceneType } from '../Data/SceneType';
 const { ccclass, property } = _decorator;
 
@@ -25,7 +27,7 @@ const { ccclass, property } = _decorator;
  */
 
 @ccclass('StartScene')
-export class StartScene extends Component {
+export class StartScene extends BaseScene {
 
 
     start() {
@@ -56,6 +58,10 @@ export class StartScene extends Component {
         // AudioManager.init();
         UIMgr.showModule(ModuleType.HOT_UPDATE);
     };
+
+    protected initView() {
+       log("Start Scene init View");
+    }
 }
 
 /**
