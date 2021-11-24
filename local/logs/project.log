@@ -470,3 +470,5 @@
 2021-11-23 19:13:43-error: [Scene] AppFacade is not a constructor
 2021-11-23 19:13:52-error: [Scene] A Class already exists with the same __classname__ : "BaseView".
 2021-11-23 19:13:52-error: [Scene] AppFacade is not a constructor
+2021-11-24 11:44:06-error: [Scene] A Class already exists with the same __classname__ : "BaseView".
+2021-11-24 11:44:06-error: [Scene] AppFacade is not a constructor

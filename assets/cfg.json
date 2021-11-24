@@ -1,21 +1,24 @@
 {
-    "Game": [
-        {
-            "packageNick": "初始化",
-            "preAssets": "'prefabs/MaskUI', 'prefabs/AlertViewUI', 'prefabs/LoadingViewUI', 'prefabs/TipsViewUI', 'prefabs/HotUpdateViewUI', 'prefabs/ReconnectViewUI'",
-            "packageName": "start"
+    "Game": {
+        "Start":      {
+            "packageNick": "公共",
+            "preAssets": ["MaskUI","AlertViewUI", "LoadingViewUI", "TipsViewUI", "HotUpdateViewUI", "ReconnectViewUI"],
+            "preAtalas": [],
+            "packageName": "Start"
         },
-        {
-            "packageNick": "大厅",
-            "preAssets": "0",
-            "packageName": "hall"
+        "Main":   {
+            "packageNick": "主场景",
+            "preAssets": [],
+            "preAtalas": [],
+            "packageName": "Main"
         },
-        {
+        "Battle":{
             "packageNick": "游戏",
-            "preAssets": "0",
-            "packageName": "battle"
+            "preAssets": [],
+            "preAtalas": [],
+            "packageName": "Battle"
         }
-    ],
+    },
 
-    "webUrl": "https://service.qianjiangby.com/_front/pro-qjby.php"
+    "webUrl": ""
 }

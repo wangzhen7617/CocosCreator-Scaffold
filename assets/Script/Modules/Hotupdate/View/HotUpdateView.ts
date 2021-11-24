@@ -1,8 +1,11 @@
 
-import { _decorator, Component, Node, sys, JsonAsset } from 'cc';
+import { _decorator, Component, Node, sys, JsonAsset, AssetManager } from 'cc';
 import { BUILD, JSB } from 'cc/env';
 import { BaseView } from '../../../Core/Base/BaseView';
+import { GameType } from '../../../Core/Data/GameType';
 import { GlobalParams } from '../../../Core/Data/GlobalParams';
+import { AssetsMgr } from '../../../Core/Mgr/AssetsMgr';
+import { UIMgr } from '../../../Core/Mgr/UIMgr';
 const { ccclass, property } = _decorator;
 
 /**
@@ -49,24 +52,19 @@ export class HotUpdateView extends BaseView {
 
     private runGame() {
 
-        let json = this.cfgJson.json;
-
-        let localGameInfo: any = Utils.getLocalItemValue(LocalItems.LOCAL_GAME_INFO);
-        if (!localGameInfo) localGameInfo = {};
-        else localGameInfo = JSON.parse(localGameInfo);
-        for (let i: number = 0; i < ret.GameList.length; i++) {
-            let gameInfo: any = ret.GameList[i];
+        let json: any = this.cfgJson.json;
+        let localGameInfo: any = {}
+        for (let i: number = 0; i < json.Game.length; i++) {
+            let gameInfo: any = json.Game[i];
             let pkgName: string = gameInfo.packageName;
-            GlobalParams.subGameInfo[pkgName] = Utils.deepCopy(gameInfo);
-            if (!localGameInfo[pkgName]) {
-                localGameInfo[pkgName] = Utils.deepCopy(gameInfo);
-                localGameInfo[pkgName].version = '1.0.00';
-            }
-            //模块的资源是否已经加载到内存里，刚打开游戏的时候都是false
             localGameInfo[pkgName].isLoaded = false;
         }
         GlobalParams.localGameInfo = localGameInfo;
-        AssetsManager.reloadModule(SubGameType.LOGIN, false, this.prefabCompleteCallback, false);
+        AssetsMgr.loadGame(GameType.Start, false, this.onLoadCallback, false);
+    }
+
+    onLoadCallback() {
+        UIMgr.showModule(GameType.Start);
     }
 
 }

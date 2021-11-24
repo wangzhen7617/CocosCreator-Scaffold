@@ -19,7 +19,7 @@ const { ccclass, property } = _decorator;
 @ccclass('GameType')
 export class GameType extends Component {
     static Start: string = 'Start';
-    static MAIN: string = 'MAIN';
+    static Main: string = 'Main';
 }
 
 /**
