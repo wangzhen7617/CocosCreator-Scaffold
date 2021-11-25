@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, CCObject } from 'cc';
+import { _decorator, Component, Node, CCObject, UITransform } from 'cc';
 import { UIMgr } from '../Mgr/UIMgr';
 import { AppFacade } from './AppFacade';
 import { Dispatcher } from './Dispatcher';
@@ -44,21 +44,21 @@ export class Mediator extends Component {
         }
     }
 
-    public getNewUI(): any {
+    public getNewUI(): Node {
         throw 'IMediator.getNewUI : please override this function';
     }
 
-    protected createModuleView(): any {
-        this._moduleView = this.getNewUI();
+    public createModuleView(): any {
+        this._moduleView = this.getNewUI() as Module;
         this.addModuleEvent();
         return this._moduleView;
     }
 
-    protected getModuleView(): any {
+    public getModuleView(): any {
         return this._moduleView;
     }
 
-    protected getModuleParent(): any {
+    public getModuleParent(): any {
         let moduleView: any = this.getModuleView();
         if (moduleView && moduleView.parent) {
             return moduleView.parent;
@@ -66,14 +66,14 @@ export class Mediator extends Component {
         return null;
     }
 
-    protected addModuleToScene(parent: any): any {
+    public addModuleToScene(parent: any): any {
         let view: any = this.createModuleView();
-        view.width = parent.width;
-        view.height = parent.height;
+        view.getComponent(UITransform).width = parent.getComponent(UITransform).width;
+        view.getComponent(UITransform).height = parent.getComponent(UITransform).height;
         view.dispatcher.vo = this.proxy.vo;
         this.onModulePreAddToScene();
         parent.addChild(view);
-        setTimeout(this.checkSaveEvent, 50);
+        setTimeout(this.checkSaveEvent, 50);  //TODO 后续
         return view;
     }
 

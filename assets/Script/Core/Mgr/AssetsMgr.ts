@@ -21,18 +21,34 @@ const { ccclass, property } = _decorator;
 
 @ccclass('AssetsMgr')
 export class AssetsMgr extends Component {
+    //"Prefabs/AlertViewUI", "Prefabs/LoadingViewUI", "Prefabs/TipsViewUI", , "Prefabs/ReconnectViewUI"
 
-
+    private static commonPrefab = ["Prefabs/MaskViewUI", "Prefabs/HotUpdateViewUI"]
     //已加载的纹理集
     private static loadedAtlas: { [index: string]: SpriteAtlas } = {};
-
     //模块加载完成回调
     private static reloadCallBack: (this: void) => void;
     public static isLoading: boolean = false;
 
     public static init(callBack: (this: void) => void): void {
-        AssetsMgr.loadGame(GameType.Start, true, callBack, true)
+        // callBack()
+        // AssetsMgr.loadGame(GameType.Start, true, callBack, true)
+        resources.load(
+            AssetsMgr.commonPrefab,
+            Prefab,
+            (): void => { },
+            (error: any, assets: any): void => {
+                if (error) {
+                    warn('prefab加载失败', error);
+                    // return;
+                }
+                log(assets)
+                callBack()
+            }
+        );
     }
+
+
 
     public static loadGame(moduleName: string, refresh: boolean, cb: (this: void, error?: any, assets?: any) => void, showLoading: boolean = true): void {
         log('==============================reloadModule===================', new Date());
@@ -58,7 +74,7 @@ export class AssetsMgr extends Component {
         let assetsArr: Array<string> = localGameInfo[moduleName].preAssets;
         if (assetsArr) {
             assetsArr.forEach(element => {
-                fixAssetsArr.push('prefabs/' + element);
+                fixAssetsArr.push('Prefabs/' + element);
             });
         }
 
@@ -132,7 +148,7 @@ export class AssetsMgr extends Component {
 
     public static loadView(name: string, cb: (_err: Error, _res: any) => void): void {
         UIMgr.showLoading('加载资源中');
-        resources.load(`prefabs/${name}`, Prefab, (err: Error, res: any) => {
+        resources.load(`Prefabs/${name}`, Prefab, (err: Error, res: any) => {
             UIMgr.hideLoading();
             if (err) {
                 cb(err, null);
@@ -143,10 +159,10 @@ export class AssetsMgr extends Component {
     }
     public static releaseView(name: string): void {
         log("assets start: ", assetManager.assets)
-        resources.release(`prefabs/${name}`)
+        resources.release(`Prefabs/${name}`)
         log("assets end: ", assetManager.assets)
 
-        //  cc.loader.release(cc.loader.getDependsRecursively(`prefabs/${name}`));
+        //  cc.loader.release(cc.loader.getDependsRecursively(`Prefabs/${name}`));
     }
 
 }

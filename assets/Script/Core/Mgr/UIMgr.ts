@@ -1,5 +1,8 @@
 
-import { _decorator, Component, Node, instantiate, resources, director, CCObject } from 'cc';
+import { _decorator, Component, Node, instantiate, resources, director, CCObject, log, isValid } from 'cc';
+import { ModuleEventType } from '../Data/ModuleEventType';
+import { AppFacade } from '../MVC/AppFacade';
+import { Mediator } from '../MVC/Mediator';
 const { ccclass, property } = _decorator;
 
 /**
@@ -43,18 +46,18 @@ export class UIMgr extends Component {
     }
 
     private static createMask(): void {
-        UIMgr.mask = instantiate(resources.get('prefabs/MaskUI'));
+        UIMgr.mask = instantiate(resources.get('Prefabs/MaskViewUI'));
         UIMgr.mask.opacity = 100;
         UIMgr.mask.zIndex = 9980;
     }
 
     private static createAlert(): void {
-        UIMgr.alert = instantiate(resources.get('prefabs/AlertViewUI'));
+        UIMgr.alert = instantiate(resources.get('Prefabs/AlertViewUI'));
         UIMgr.alert.zIndex = 9981;
     }
 
     private static createLoading(): void {
-        UIMgr.loading = instantiate(resources.get('prefabs/LoadingViewUI'));
+        UIMgr.loading = instantiate(resources.get('Prefabs/LoadingViewUI'));
         UIMgr.loading.zIndex = 9982;
     }
 
@@ -78,76 +81,70 @@ export class UIMgr extends Component {
         errorStr?: string
     ): void {
         // cc.log('=====showLoading===');
-        if (errorStr) LoadingViewUI.errorStr = errorStr;
-        if (b_hideCount) LoadingViewUI.b_hideCount = b_hideCount;
-        if (!cc.isValid(AlertManager.loading)) {
-            AlertManager.createLoading();
-        }
-        if (AlertManager.loading.parent) {
-            AlertManager.hideLoading();
-        }
-        try {
-            let loadingView: any = AlertManager.loading.getComponent('LoadingViewUI');
-            let rootNode: any = AlertManager.getRootNode();
-            rootNode.addChild(AlertManager.loading);
-            loadingView.currentCount = 0;
-            loadingView.totalCount = totalCount || 100;
-            loadingView.showLoading(str, callBack, retryCallBack);
-
-            if (doRetryOnce) {
-                retryCallBack();
-            }
-        } catch (error) {
-            AlertManager.showTips(error);
-        }
-
-        // loadingView.node.getChildByName("MaskUI").active = true;
-
-        // if(str==i18n.t("TipsTxt.tips_game_ing")){
-        //     // loadingView.node.getChildByName("bg").active = false;
-        //     loadingView.node.getChildByName("MaskUI").active = true;
-        // }else{
-        //     // loadingView.node.getChildByName("bg").active = !b_hide_bg;
+        // if (errorStr) LoadingViewUI.errorStr = errorStr;
+        // if (b_hideCount) LoadingViewUI.b_hideCount = b_hideCount;
+        // if (!cc.isValid(AlertManager.loading)) {
+        //     AlertManager.createLoading();
         // }
+        // if (AlertManager.loading.parent) {
+        //     AlertManager.hideLoading();
+        // }
+        // try {
+        //     let loadingView: any = AlertManager.loading.getComponent('LoadingViewUI');
+        //     let rootNode: any = AlertManager.getRootNode();
+        //     rootNode.addChild(AlertManager.loading);
+        //     loadingView.currentCount = 0;
+        //     loadingView.totalCount = totalCount || 100;
+        //     loadingView.showLoading(str, callBack, retryCallBack);
+
+        //     if (doRetryOnce) {
+        //         retryCallBack();
+        //     }
+        // } catch (error) {
+        //     AlertManager.showTips(error);
+        // }
+
+        // loadingView.node.getChildByName("MaskViewUI").active = true;
+
     }
 
     public static hideLoading(): void {
         // cc.log('=====hideLoading===');
-        if (cc.isValid(AlertManager.loading)) {
-            AlertManager.loading.getComponent('LoadingViewUI').hideLoading();
-        }
+        // if (cc.isValid(AlertManager.loading)) {
+        //     AlertManager.loading.getComponent('LoadingViewUI').hideLoading();
+        // }
     }
 
     public static isLoading(): boolean {
-        return cc.isValid(AlertManager.loading) && AlertManager.loading.parent != null;
+        return isValid(UIMgr.loading) && UIMgr.loading.parent != null;
     }
 
     public static setLoadingCurrentCount(value: number): void {
-        if (cc.isValid(AlertManager.loading)) {
-            AlertManager.loading.getComponent('LoadingViewUI').currentCount = value;
-        }
+        // if (cc.isValid(AlertManager.loading)) {
+        //     AlertManager.loading.getComponent('LoadingViewUI').currentCount = value;
+        // }
     }
 
     public static setLoadingTotalCount(value: number): void {
-        if (cc.isValid(AlertManager.loading)) {
-            AlertManager.loading.getComponent('LoadingViewUI').totalCount = value;
-        }
+        // if (cc.isValid(AlertManager.loading)) {
+        //     AlertManager.loading.getComponent('LoadingViewUI').totalCount = value;
+        // }
     }
 
     public static setLoadingStr(value: number) {
-        if (cc.isValid(AlertManager.loading)) {
-            AlertManager.loading.getComponent('LoadingViewUI').progressStr = value;
-        }
+        // if (cc.isValid(AlertManager.loading)) {
+        //     AlertManager.loading.getComponent('LoadingViewUI').progressStr = value;
+        // }
     }
 
     public static showTips(str: string, showTime?: number, posY?: number) {
-        if (!AlertManager.tips || !AlertManager.tips.parent) {
-            AlertManager.tips = cc.instantiate(cc.loader.getRes('prefabs/TipsViewUI'));
-            AlertManager.tips.zIndex = 9983;
-            let rootNode: any = AlertManager.getRootNode();
-            rootNode.addChild(AlertManager.tips);
-        }
-        AlertManager.tips.getComponent('TipsViewUI').show(str, showTime, posY);
+        // if (!AlertManager.tips || !AlertManager.tips.parent) {
+        //     AlertManager.tips = cc.instantiate(cc.loader.getRes('Prefabs/TipsViewUI'));
+        //     AlertManager.tips.zIndex = 9983;
+        //     let rootNode: any = AlertManager.getRootNode();
+        //     rootNode.addChild(AlertManager.tips);
+        // }
+        // AlertManager.tips.getComponent('TipsViewUI').show(str, showTime, posY);
     }
 
     public static showAlert(
@@ -160,116 +157,116 @@ export class UIMgr extends Component {
         cancelStr?: string,
         swapCallBack?: boolean
     ): void {
-        AudioManager.playSFX(GlobalParams.btn_sound);
-        Utils.nativeVibrate(shake.light);
+        // AudioManager.playSFX(GlobalParams.btn_sound);
+        // Utils.nativeVibrate(shake.light);
 
-        if (!cc.isValid(AlertManager.alert)) {
-            AlertManager.createAlert();
-        }
-        if (AlertManager.alert.parent) {
-            AlertManager.alert.removeFromParent(false);
-        }
-        if (!cc.isValid(AlertManager.mask)) {
-            AlertManager.createMask();
-        }
-        if (AlertManager.mask.parent) {
-            AlertManager.mask.removeFromParent(false);
-        }
-        let rootNode: any = AlertManager.getRootNode();
-        let newConfirmCallBack = (): void => {
-            AlertManager.mask.removeFromParent(false);
-            this.topUIChange('');
-            if (confirmCallBack) {
-                confirmCallBack();
-            }
-        };
-        let newCancelCallBack = (): void => {
-            AlertManager.mask.removeFromParent(false);
-            this.topUIChange('');
-            if (cancelCallBack) {
-                cancelCallBack();
-            }
-        };
-        let maskConfirm = (): void => {
-            AlertManager.alert.getComponent('AlertViewUI').confirmFun();
-        };
-        let maskCancel = (): void => {
-            AlertManager.alert.getComponent('AlertViewUI').cancelFun();
-        };
-        AlertManager.mask.getComponent('MaskUI').setCancelCallback(swapCallBack ? maskConfirm : maskCancel);
-        AlertManager.alert.getComponent('AlertViewUI').show(title, content, newConfirmCallBack, newCancelCallBack, showCancel, confirmStr, cancelStr);
-        rootNode.addChild(AlertManager.mask);
-        rootNode.addChild(AlertManager.alert);
-        this.topUIChange('AlertViewUI');
+        // if (!cc.isValid(AlertManager.alert)) {
+        //     AlertManager.createAlert();
+        // }
+        // if (AlertManager.alert.parent) {
+        //     AlertManager.alert.removeFromParent(false);
+        // }
+        // if (!cc.isValid(AlertManager.mask)) {
+        //     AlertManager.createMask();
+        // }
+        // if (AlertManager.mask.parent) {
+        //     AlertManager.mask.removeFromParent(false);
+        // }
+        // let rootNode: any = AlertManager.getRootNode();
+        // let newConfirmCallBack = (): void => {
+        //     AlertManager.mask.removeFromParent(false);
+        //     this.topUIChange('');
+        //     if (confirmCallBack) {
+        //         confirmCallBack();
+        //     }
+        // };
+        // let newCancelCallBack = (): void => {
+        //     AlertManager.mask.removeFromParent(false);
+        //     this.topUIChange('');
+        //     if (cancelCallBack) {
+        //         cancelCallBack();
+        //     }
+        // };
+        // let maskConfirm = (): void => {
+        //     AlertManager.alert.getComponent('AlertViewUI').confirmFun();
+        // };
+        // let maskCancel = (): void => {
+        //     AlertManager.alert.getComponent('AlertViewUI').cancelFun();
+        // };
+        // AlertManager.mask.getComponent('MaskViewUI').setCancelCallback(swapCallBack ? maskConfirm : maskCancel);
+        // AlertManager.alert.getComponent('AlertViewUI').show(title, content, newConfirmCallBack, newCancelCallBack, showCancel, confirmStr, cancelStr);
+        // rootNode.addChild(AlertManager.mask);
+        // rootNode.addChild(AlertManager.alert);
+        // this.topUIChange('AlertViewUI');
     }
 
     public static hideAlert(): boolean {
-        if (cc.isValid(AlertManager.alert) && AlertManager.alert.parent != null) {
-            AlertManager.alert.getComponent('AlertViewUI').hide();
-            return true;
-        }
+        // if (cc.isValid(AlertManager.alert) && AlertManager.alert.parent != null) {
+        //     AlertManager.alert.getComponent('AlertViewUI').hide();
+        //     return true;
+        // }
         return false;
     }
 
     public static showModule(moduleName: string): void {
-        let mediator: any = AppFacade.getMediator(moduleName);
+        let mediator: Mediator = AppFacade.getInstance().getMediator(moduleName);
         if (mediator != null) {
             if (mediator.getModuleView() != null) {
-                AlertManager.removeModule(moduleName);
+                UIMgr.removeModule(moduleName);
             }
-            let rootNode: any = AlertManager.getRootNode();
+            let rootNode: any = UIMgr.getRootNode();
             let newUI: any = mediator.addModuleToScene(rootNode);
-            AlertManager.uiMap.push({ moduleName: moduleName, ui: newUI });
+            UIMgr.uiMap.push({ moduleName: moduleName, ui: newUI });
         } else {
-            cc.log('showModule......mediator..null....' + moduleName);
+            log('showModule......mediator..null....' + moduleName);
         }
     }
 
     public static removeModule(moduleName: string): void {
-        cc.log('====removeModule===', moduleName);
-        let moduleUI: any = AlertManager.getModuleUI(moduleName);
+        log('====removeModule===', moduleName);
+        let moduleUI: any = UIMgr.getModuleUI(moduleName);
         if (moduleUI != null) {
-            AlertManager.destroyModuleUI(moduleUI);
-            AlertManager.removeMoudleUI(moduleName);
+            UIMgr.destroyModuleUI(moduleUI);
+            UIMgr.removeMoudleUI(moduleName);
         }
     }
 
     public static destroyModuleUI(moduleUI: any): void {
-        let mediator: any = AppFacade.getMediator(moduleUI.getModuleName());
+        let mediator: any = AppFacade.getInstance().getMediator(moduleUI.getModuleName());
         mediator.removeModule();
     }
 
     public static hasModule(moduleName: string): boolean {
-        return AlertManager.getModuleUI(moduleName) != null;
+        return UIMgr.getModuleUI(moduleName) != null;
     }
 
     public static getModuleUI(moduleName: string): any {
-        for (let i: number = 0; i < AlertManager.uiMap.length; i++) {
-            if (AlertManager.uiMap[i].moduleName == moduleName) {
-                return AlertManager.uiMap[i].ui;
+        for (let i: number = 0; i < UIMgr.uiMap.length; i++) {
+            if (UIMgr.uiMap[i].moduleName == moduleName) {
+                return UIMgr.uiMap[i].ui;
             }
         }
         return null;
     }
 
     public static removeMoudleUI(moduleName: string): void {
-        for (let i: number = AlertManager.uiMap.length - 1; i >= 0; i--) {
-            if (AlertManager.uiMap[i].moduleName == moduleName) {
-                AlertManager.uiMap.splice(i, 1);
+        for (let i: number = UIMgr.uiMap.length - 1; i >= 0; i--) {
+            if (UIMgr.uiMap[i].moduleName == moduleName) {
+                UIMgr.uiMap.splice(i, 1);
                 break;
             }
         }
     }
 
     public static removeAllModules(): void {
-        while (AlertManager.uiMap.length > 0) {
-            AlertManager.destroyModuleUI(AlertManager.uiMap.pop().ui);
+        while (UIMgr.uiMap.length > 0) {
+            UIMgr.destroyModuleUI(UIMgr.uiMap.pop().ui);
         }
     }
 
     public static topUIChange(uiName: string): void {
-        for (let i: number = 0; i < AlertManager.uiMap.length; i++) {
-            AlertManager.uiMap[i].ui.dispatcher.emit(ModuleEventType.MODULE_TOP_UI_CHANGE, uiName);
+        for (let i: number = 0; i < UIMgr.uiMap.length; i++) {
+            UIMgr.uiMap[i].ui.dispatcher.emit(ModuleEventType.MODULE_TOP_UI_CHANGE, uiName);
         }
     }
 }

@@ -21,7 +21,7 @@ const { ccclass, property } = _decorator;
  *
  */
 
-@ccclass('BaseView')
+@ccclass('BaseModule')
 export class BaseModule extends Component {
 
     public dispatcher: Dispatcher;

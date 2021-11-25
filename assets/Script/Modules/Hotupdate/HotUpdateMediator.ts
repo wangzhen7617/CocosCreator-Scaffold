@@ -1,5 +1,6 @@
 
 import { _decorator, Component, Node } from 'cc';
+import { ModuleType } from '../../Core/Data/ModuleType';
 import { NotifyEventType } from '../../Core/Data/NotifyEventType';
 import { Mediator } from '../../Core/MVC/Mediator';
 import { HotUpdateModule } from './HotUpdateModule';
@@ -34,7 +35,7 @@ export class HotUpdateMediator extends Mediator {
     }
 
     public getNewUI(): any {
-        return new HotUpdateModule();
+        return new HotUpdateModule(ModuleType.HOT_UPDATE);
     }
 
 }

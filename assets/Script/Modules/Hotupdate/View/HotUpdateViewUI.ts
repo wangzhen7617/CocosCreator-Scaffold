@@ -53,14 +53,16 @@ export class HotUpdateView extends BaseView {
     private runGame() {
 
         let json: any = this.cfgJson.json;
-        let localGameInfo: any = {}
-        for (let i: number = 0; i < json.Game.length; i++) {
-            let gameInfo: any = json.Game[i];
-            let pkgName: string = gameInfo.packageName;
-            localGameInfo[pkgName].isLoaded = false;
-        }
-        GlobalParams.localGameInfo = localGameInfo;
-        AssetsMgr.loadGame(GameType.Start, false, this.onLoadCallback, false);
+        // let localGameInfo: any =  json.Game;
+        // for (const key in json.Game) {
+        //     let gameInfo: any = json.Game[key];
+        //     let pkgName: string = gameInfo.packageName;
+        //     localGameInfo[pkgName].isLoaded = false;
+        // }
+        GlobalParams.localGameInfo = json.Game;;
+
+        //todo
+        // AssetsMgr.loadGame(GameType.Start, false, this.onLoadCallback, false);
     }
 
     onLoadCallback() {

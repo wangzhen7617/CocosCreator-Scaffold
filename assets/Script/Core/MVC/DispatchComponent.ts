@@ -4,10 +4,10 @@ import { Dispatcher } from './Dispatcher';
 const { ccclass, property } = _decorator;
 
 
- 
+
 @ccclass('DispatchComponent')
 export class DispatchComponent extends Component {
-    public dispatcher:Dispatcher;
-    public data:any;
+    public dispatcher: Dispatcher;
+    public data: any;
 }
 

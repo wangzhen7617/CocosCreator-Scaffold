@@ -1,10 +1,11 @@
 
-import { _decorator, Component, Node, instantiate, Widget, warn, resources, tween, isValid, log, game } from 'cc';
+import { _decorator, Component, Node, instantiate, Widget, warn, resources, tween, isValid, log, game, Vec3, easing } from 'cc';
 import { GlobalParams } from '../Data/GlobalParams';
 import { ModuleEventType } from '../Data/ModuleEventType';
 import { AssetsMgr } from '../Mgr/AssetsMgr';
 import { UIMgr } from '../Mgr/UIMgr';
 import { Stack } from '../Utils/Stack';
+import { DispatchComponent } from './DispatchComponent';
 import { Dispatcher } from './Dispatcher';
 const { ccclass, property } = _decorator;
 
@@ -36,7 +37,7 @@ export class Module extends Node {
         this.dispatcher = new Dispatcher();
         this.uiStack = new Stack();
 
-        this.mask = instantiate(resources.get('prefabs/MaskUI'));
+        this.mask = instantiate(resources.get('Prefabs/MaskViewUI'));
         this.mask.zIndex = 500;
 
         let widget = this.addComponent(Widget);
@@ -115,8 +116,8 @@ export class Module extends Node {
         if (typeof data == 'undefined') {
             data = null;
         }
-        let lastUI: any = this.uiStack.top();
-        let newUI: any = instantiate(resources.get('prefabs/' + uiName));
+        let lastUI: Node = this.uiStack.top();
+        let newUI: Node = instantiate(resources.get('Prefabs/' + uiName));
         if (lastUI != null && lastUI.name == newUI.name) {
             //不能push两个一样的UI，防止双击
             newUI.destroy();
@@ -132,15 +133,18 @@ export class Module extends Node {
                 },
                 false
             );
-        let moduleDispatcher: any = newUI.getComponent('ModuleDispatcher');
-        if (moduleDispatcher) {
-            moduleDispatcher.dispatcher = this.dispatcher;
-            moduleDispatcher.data = data;
-            moduleDispatcher.currentModuleName = this.getModuleName();
-            moduleDispatcher.showAnimation = showAnimation;
-        } else {
-            warn('module 賦值失敗...................');
-        }
+        // let moduleDispatcher: any = newUI.getComponent('ModuleDispatcher');
+        let DispatcherComponent = newUI.addComponent(DispatchComponent)
+        DispatcherComponent.dispatcher = this.dispatcher;
+        DispatcherComponent.data = data;
+
+
+        // if (DispatcherComponent) {
+        //     // DispatcherComponent.currentModuleName = this.getModuleName();
+        //     // DispatcherComponent.showAnimation = showAnimation;
+        // } else {
+        //     warn('module 賦值失敗...................');
+        // }
         this.lastPopUIName = '';
         log('======nweUI====', uiName);
         this.addChild(newUI);
@@ -148,11 +152,10 @@ export class Module extends Node {
         if (showAnimation && !GlobalParams.isAppBackGround) {
             this.uiChanging = true;
             if (!isValid(this.mask)) {
-                this.mask = instantiate(resources.get('prefabs/MaskUI'));
+                this.mask = instantiate(resources.get('Prefabs/MaskViewUI'));
                 this.mask.zIndex = 500;
             }
             this.addChild(this.mask);
-            newUI.opacity = 0;
             if (lastUI != null) {
                 if (disposeTop) {
                     lastUI.destroy();
@@ -162,11 +165,7 @@ export class Module extends Node {
                 }
             }
             let t = tween;
-            t(newUI)
-                .set({ opacity: 0, scale: 0.8 })
-                .parallel(t().to(0.15, { scale: 1.04 }, { easing: 'sineOut' }), t().to(0.15, { opacity: 255 }))
-
-                .to(0.15, { scale: 1 }, { easing: 'sineIn' })
+            t(newUI).to(0.2, { scale: Vec3.ONE }, { easing: "backOut" })
                 .call(() => {
                     this.uiChanging = false;
                     this.uiStack.push(newUI);

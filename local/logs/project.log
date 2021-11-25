@@ -1,474 +1,90 @@
-2021-11-22 14:43:14-log: [Package] Profile Migrate: program@Cocos Creator...
-2021-11-22 14:43:14-log: [Package] Profile Migrate: program@Cocos Creator...
-2021-11-22 14:43:14-log: [Package] Profile Migrate: device@Cocos Creator...
-2021-11-22 14:43:14-log: [Package] Profile Migrate: device@Cocos Creator...
-2021-11-22 14:43:14-log: [Package] Profile Migrate: engine@Cocos Creator...
-2021-11-22 14:43:14-log: [Package] Profile Migrate: engine@Cocos Creator...
-2021-11-22 14:43:15-log: [Package] menu@1.0.0 enable
-2021-11-22 14:43:15-log: [Package] profile@1.0.0 enable
-2021-11-22 14:43:15-log: [Package] messages@1.0.0 enable
-2021-11-22 14:43:15-log: [Package] program@1.0.0 enable
-2021-11-22 14:43:15-log: [Package] device@1.0.1 enable
-2021-11-22 14:43:15-log: [Package] ui-kit@1.0.1 enable
-2021-11-22 14:43:15-log: [Package] tester@1.0.0 enable
-2021-11-22 14:43:15-log: [Package] preferences@1.0.0 enable
-2021-11-22 14:43:15-log: Setup mods mgr.: 262.318ms
-2021-11-22 14:43:15-log: [Package] engine@1.0.5 enable
-2021-11-22 14:43:18-log: [Package] programming@1.0.0 enable
-2021-11-22 14:43:19-log: [Package] asset-db@1.0.0 enable
-2021-11-22 14:43:19-log: [Package] console@1.0.0 enable
-2021-11-22 14:43:19-log: [Package] scene@1.0.0 enable
-2021-11-22 14:43:19-log: [Package] server@1.0.0 enable
-2021-11-22 14:43:19-log: [Package] utils@1.0.0 enable
-2021-11-22 14:43:19-log: [Package] assets@1.0.0 enable
-2021-11-22 14:43:19-log: [Package] inspector@1.0.0 enable
-2021-11-22 14:43:19-log: [Package] hierarchy@1.0.0 enable
-2021-11-22 14:43:21-log: [Package] preview@1.0.1 enable
-2021-11-22 14:43:21-log: [Package] animator@1.0.0 enable
-2021-11-22 14:43:21-log: [Package] builder@1.2.9 enable
-2021-11-22 14:43:21-log: [Package] node-library@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] shortcuts@1.0.1 enable
-2021-11-22 14:43:22-log: [Package] package-asset@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] reference-image@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] channel-upload-tools@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] runtime-dev-tools@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] alipay-mini-game@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] android@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] baidu-mini-game@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] bytedance-mini-game@1.0.1 enable
-2021-11-22 14:43:22-log: [Package] huawei-agc@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] ios@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] ios-app-clip@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] mac@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] native@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] ohos@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] web-desktop@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] web-mobile@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] wechatgame@1.0.1 enable
-2021-11-22 14:43:22-log: [Package] windows@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] xiaomi-quick-game@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] cocos-play@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] huawei-quick-game@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] link-sure@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] oppo-mini-game@1.0.0 enable
-2021-11-22 14:43:22-log: [Package] qtt@1.0.0 enable
-2021-11-22 14:43:23-log: [Package] vivo-mini-game@1.0.0 enable
-2021-11-22 14:43:23-log: [Package] cocos-service@3.0.1 enable
-2021-11-22 14:43:23-log: [Package] importer@1.0.0 enable
-2021-11-22 14:43:24-log: [Package] extension@3.0.10 enable
-2021-11-22 14:43:24-log: [Im-plugin] Check im-plugin version.
-2021-11-22 14:43:24-log: [Package] im-plugin@3.0.7 enable
-2021-11-22 14:43:24-log: [Package] lightmap@1.0.3 enable
-2021-11-22 14:43:25-log: [Im-plugin] No online info of im-plugin.
-2021-11-22 14:43:31-log: [Scene] begin init
-2021-11-22 14:43:31-log: [Scene] require engine end
-2021-11-22 14:43:31-log: [Scene] Serialize end
-2021-11-22 14:43:31-log: [Scene] configureStartup end
-2021-11-22 14:43:31-info: [Scene] WebGL2 device initialized.
-2021-11-22 14:43:31-log: [Scene] Cocos Creator v3.3.2
-2021-11-22 14:43:32-info: [Scene] Forward render pipeline initialized.
-2021-11-22 14:43:32-log: [Scene] openEngine end
-2021-11-22 14:43:32-log: [Scene] configureEngine end
-2021-11-22 14:44:14-error: 无法从 cce:/internal/x/prerequisite-imports 解析出模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/GameManager.ts，已将其视为外部模块。
-这是因为：Error: 以 cce:/internal/x/prerequisite-imports 为起点找不到模块 "file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/GameManager.ts"
-2021-11-22 14:44:14-error: 无法从 cce:/internal/x/prerequisite-imports 解析出模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/GameManager.ts，已将其视为外部模块。
-这是因为：Error: 以 cce:/internal/x/prerequisite-imports 为起点找不到模块 "file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/GameManager.ts"
-2021-11-22 15:26:30-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
+2021-11-25 17:52:19-log: [Package] menu@1.0.0 enable
+2021-11-25 17:52:19-log: [Package] profile@1.0.0 enable
+2021-11-25 17:52:19-log: [Package] messages@1.0.0 enable
+2021-11-25 17:52:19-log: [Package] program@1.0.0 enable
+2021-11-25 17:52:19-log: [Package] device@1.0.1 enable
+2021-11-25 17:52:19-log: [Package] ui-kit@1.0.1 enable
+2021-11-25 17:52:19-log: [Package] tester@1.0.0 enable
+2021-11-25 17:52:19-log: [Package] preferences@1.0.0 enable
+2021-11-25 17:52:20-log: Setup mods mgr.: 225.678ms
+2021-11-25 17:52:20-log: [Package] engine@1.0.5 enable
+2021-11-25 17:52:22-log: [Package] programming@1.0.0 enable
+2021-11-25 17:52:22-log: [Package] asset-db@1.0.0 enable
+2021-11-25 17:52:22-log: [Package] console@1.0.0 enable
+2021-11-25 17:52:22-log: [Package] scene@1.0.0 enable
+2021-11-25 17:52:22-log: [Package] project@1.0.1 enable
+2021-11-25 17:52:22-log: [Package] about@1.0.0 enable
+2021-11-25 17:52:23-log: [Package] server@1.0.0 enable
+2021-11-25 17:52:23-log: [Package] assets@1.0.0 enable
+2021-11-25 17:52:23-log: [Package] inspector@1.0.0 enable
+2021-11-25 17:52:23-log: [Package] hierarchy@1.0.0 enable
+2021-11-25 17:52:24-log: [Package] preview@1.0.1 enable
+2021-11-25 17:52:24-log: [Package] animator@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] builder@1.2.9 enable
+2021-11-25 17:52:25-log: [Package] node-library@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] shortcuts@1.0.1 enable
+2021-11-25 17:52:25-log: [Package] package-asset@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] reference-image@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] channel-upload-tools@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] runtime-dev-tools@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] alipay-mini-game@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] android@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] baidu-mini-game@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] bytedance-mini-game@1.0.1 enable
+2021-11-25 17:52:25-log: [Package] huawei-agc@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] ios@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] ios-app-clip@1.0.0 enable
+2021-11-25 17:52:25-log: [Package] mac@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] native@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] ohos@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] web-desktop@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] web-mobile@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] wechatgame@1.0.1 enable
+2021-11-25 17:52:26-log: [Package] windows@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] xiaomi-quick-game@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] cocos-play@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] huawei-quick-game@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] link-sure@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] oppo-mini-game@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] qtt@1.0.0 enable
+2021-11-25 17:52:26-log: [Package] vivo-mini-game@1.0.0 enable
+2021-11-25 17:52:27-log: [Package] cocos-service@3.0.1 enable
+2021-11-25 17:52:27-log: [Package] importer@1.0.0 enable
+2021-11-25 17:52:27-log: [Package] extension@3.0.10 enable
+2021-11-25 17:52:28-log: [Im-plugin] Check im-plugin version.
+2021-11-25 17:52:28-log: [Package] im-plugin@3.0.7 enable
+2021-11-25 17:52:28-log: [Package] lightmap@1.0.3 enable
+2021-11-25 17:52:29-log: [Scene] begin init
+2021-11-25 17:52:29-log: [Scene] require engine end
+2021-11-25 17:52:29-log: [Scene] Serialize end
+2021-11-25 17:52:29-log: [Scene] configureStartup end
+2021-11-25 17:52:29-info: [Scene] WebGL2 device initialized.
+2021-11-25 17:52:29-log: [Scene] Cocos Creator v3.3.2
+2021-11-25 17:52:29-log: [Im-plugin] No online info of im-plugin.
+2021-11-25 17:52:29-error: [Scene] AppFacade is not a constructor
+2021-11-25 17:52:29-info: [Scene] Forward render pipeline initialized.
+2021-11-25 17:52:30-log: [Scene] openEngine end
+2021-11-25 17:52:30-log: [Scene] configureEngine end
+2021-11-25 17:52:31-error: [Scene] AppFacade is not a constructor
+2021-11-25 18:00:44-error: [Scene] AppFacade is not a constructor
+2021-11-25 18:59:22-error: [Scene] AppFacade is not a constructor
+2021-11-25 19:02:24-error: [Scene] AppFacade is not a constructor
+2021-11-25 19:03:00-error: [Scene] AppFacade is not a constructor
+2021-11-25 19:04:40-error: [Scene] AppFacade is not a constructor
+2021-11-25 19:06:38-error: [Scene] AppFacade is not a constructor
+2021-11-25 19:09:03-error: [Scene] A Class already exists with the same __classname__ : "BaseView".
+2021-11-25 19:28:37-error: [Scene] addComponent: Cannot add any component to the scene.
+2021-11-25 19:28:53-error: [Scene] addComponent: Cannot add any component to the scene.
+2021-11-25 19:39:11-error: [preview-error]Uncaught TypeError: The thing you want to instantiate is nil in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-11-25 19:39:52-error: [preview-error]Uncaught TypeError: The thing you want to instantiate is nil in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-11-25 19:42:14-error: [preview-error]Uncaught TypeError: The thing you want to instantiate is nil in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-11-25 19:44:08-error: [preview-error]Uncaught TypeError: The thing you want to instantiate is nil in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-11-25 19:47:30-error: [preview-error]Uncaught TypeError: The thing you want to instantiate is nil in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-11-25 19:54:59-error: [Scene] The Asset used by node "New Node" is missing. Detailed information:
+Missing uuid: "4aaf7b50-5135-4dbe-b3e7-56da82d2359a"
 
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:26:30-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:35:34-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:35:34-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:47:15-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:47:15-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:47:53-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:47:53-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:48:12-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:48:12-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:48:40-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:48:40-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:59:53-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 15:59:53-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 16:04:18-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 16:04:18-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 16:04:35-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 16:04:35-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 16:06:33-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 16:06:33-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 16:06:46-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 16:06:46-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/AppFacade.ts ：SyntaxError: unknown: Unexpected token (21:0)
-
-  19 |
-  20 |     private _dispatcher : 
-> 21 | }
-     | ^
-  22 |
-  23 | /**
-  24 |  * [1] Class member could be defined like this..
-2021-11-22 16:32:38-error: [Scene] AppFacade is not a constructor
-2021-11-22 16:32:46-error: [Scene] AppFacade is not a constructor
-2021-11-22 16:40:06-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/Proxy.ts ：SyntaxError: unknown: Unexpected token (41:81)
-
-  39 |     }
-  40 |
-> 41 |     protected addNotification = (eventName: string, handler: (this: void, event: ) => void): void => {
-     |                                                                                  ^
-  42 |         this._dispatcher.on(eventName, handler, this);
-  43 |         this.eventList[eventName] = handler;
-  44 |     };.
-2021-11-22 16:40:06-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/Proxy.ts ：SyntaxError: unknown: Unexpected token (41:81)
-
-  39 |     }
-  40 |
-> 41 |     protected addNotification = (eventName: string, handler: (this: void, event: ) => void): void => {
-     |                                                                                  ^
-  42 |         this._dispatcher.on(eventName, handler, this);
-  43 |         this.eventList[eventName] = handler;
-  44 |     };.
-2021-11-22 16:40:06-error: [Scene] AppFacade is not a constructor
-2021-11-22 16:40:58-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/Proxy.ts ：SyntaxError: unknown: Unexpected token (41:81)
-
-  39 |     }
-  40 |
-> 41 |     protected addNotification = (eventName: string, handler: (this: void, event: ) => void): void => {
-     |                                                                                  ^
-  42 |         this._dispatcher.on(eventName, handler, this);
-  43 |         this.eventList[eventName] = handler;
-  44 |     };.
-2021-11-22 16:40:58-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/Proxy.ts ：SyntaxError: unknown: Unexpected token (41:81)
-
-  39 |     }
-  40 |
-> 41 |     protected addNotification = (eventName: string, handler: (this: void, event: ) => void): void => {
-     |                                                                                  ^
-  42 |         this._dispatcher.on(eventName, handler, this);
-  43 |         this.eventList[eventName] = handler;
-  44 |     };.
-2021-11-22 16:40:58-error: [Scene] AppFacade is not a constructor
-2021-11-22 16:41:11-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/Proxy.ts ：SyntaxError: unknown: Unexpected token (41:81)
-
-  39 |     }
-  40 |
-> 41 |     protected addNotification = (eventName: string, handler: (this: void, event: ) => void): void => {
-     |                                                                                  ^
-  42 |         this._dispatcher.on(eventName, handler, this);
-  43 |         this.eventList[eventName] = handler;
-  44 |     };.
-2021-11-22 16:41:11-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/MVC/Proxy.ts ：SyntaxError: unknown: Unexpected token (41:81)
-
-  39 |     }
-  40 |
-> 41 |     protected addNotification = (eventName: string, handler: (this: void, event: ) => void): void => {
-     |                                                                                  ^
-  42 |         this._dispatcher.on(eventName, handler, this);
-  43 |         this.eventList[eventName] = handler;
-  44 |     };.
-2021-11-22 16:41:11-error: [Scene] AppFacade is not a constructor
-2021-11-22 16:45:52-error: [Scene] AppFacade is not a constructor
-2021-11-22 16:46:01-error: [Scene] AppFacade is not a constructor
-2021-11-22 16:58:09-error: [Scene] AppFacade is not a constructor
-2021-11-22 16:58:27-error: [Scene] AppFacade is not a constructor
-2021-11-22 16:59:37-error: [Scene] AppFacade is not a constructor
-2021-11-22 16:59:37-error: [Scene] Overwriting 'destroy' function in 'Module' class without calling super is not allowed. Call the super function in 'destroy' please.
-2021-11-22 17:00:16-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:00:16-error: [Scene] Overwriting 'destroy' function in 'Module' class without calling super is not allowed. Call the super function in 'destroy' please.
-2021-11-22 17:02:02-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:02:02-error: [Scene] Overwriting 'destroy' function in 'Module' class without calling super is not allowed. Call the super function in 'destroy' please.
-2021-11-22 17:02:26-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:02:26-error: [Scene] Overwriting 'destroy' function in 'Module' class without calling super is not allowed. Call the super function in 'destroy' please.
-2021-11-22 17:03:00-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/Data/ModuleEventType.ts ：SyntaxError: unknown: Unexpected token (39:0)
-
-  37 |  * Learn more about life-cycle callbacks: https://docs.cocos.com/creator/3.3/manual/zh/scripting/life-cycle-callbacks.html
-  38 |  */
-> 39 |
-     | ^.
-2021-11-22 17:03:00-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/Data/ModuleEventType.ts ：SyntaxError: unknown: Unexpected token (39:0)
-
-  37 |  * Learn more about life-cycle callbacks: https://docs.cocos.com/creator/3.3/manual/zh/scripting/life-cycle-callbacks.html
-  38 |  */
-> 39 |
-     | ^.
-2021-11-22 17:03:00-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:03:00-error: [Scene] Overwriting 'destroy' function in 'Module' class without calling super is not allowed. Call the super function in 'destroy' please.
-2021-11-22 17:10:36-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/Data/ModuleEventType.ts ：SyntaxError: unknown: Unexpected token (39:0)
-
-  37 |  * Learn more about life-cycle callbacks: https://docs.cocos.com/creator/3.3/manual/zh/scripting/life-cycle-callbacks.html
-  38 |  */
-> 39 |
-     | ^.
-2021-11-22 17:10:36-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/Data/ModuleEventType.ts ：SyntaxError: unknown: Unexpected token (39:0)
-
-  37 |  * Learn more about life-cycle callbacks: https://docs.cocos.com/creator/3.3/manual/zh/scripting/life-cycle-callbacks.html
-  38 |  */
-> 39 |
-     | ^.
-2021-11-22 17:10:36-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:10:36-error: [Scene] 无法从 pack:///mods/fs/0/assets/Script/Core/MVC/Module.js 解析出模块 __unresolved_1。
-2021-11-22 17:10:49-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/Data/ModuleEventType.ts ：SyntaxError: unknown: Unexpected token (39:0)
-
-  37 |  * Learn more about life-cycle callbacks: https://docs.cocos.com/creator/3.3/manual/zh/scripting/life-cycle-callbacks.html
-  38 |  */
-> 39 |
-     | ^.
-2021-11-22 17:10:49-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/Data/ModuleEventType.ts ：SyntaxError: unknown: Unexpected token (39:0)
-
-  37 |  * Learn more about life-cycle callbacks: https://docs.cocos.com/creator/3.3/manual/zh/scripting/life-cycle-callbacks.html
-  38 |  */
-> 39 |
-     | ^.
-2021-11-22 17:10:49-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:10:49-error: [Scene] 无法从 pack:///mods/fs/0/assets/Script/Core/MVC/Module.js 解析出模块 __unresolved_1。
-2021-11-22 17:11:36-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/Data/ModuleEventType.ts ：SyntaxError: unknown: Unexpected token (39:0)
-
-  37 |  * Learn more about life-cycle callbacks: https://docs.cocos.com/creator/3.3/manual/zh/scripting/life-cycle-callbacks.html
-  38 |  */
-> 39 |
-     | ^.
-2021-11-22 17:11:36-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Core/Data/ModuleEventType.ts ：SyntaxError: unknown: Unexpected token (39:0)
-
-  37 |  * Learn more about life-cycle callbacks: https://docs.cocos.com/creator/3.3/manual/zh/scripting/life-cycle-callbacks.html
-  38 |  */
-> 39 |
-     | ^.
-2021-11-22 17:11:36-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:11:36-error: [Scene] 无法从 pack:///mods/fs/0/assets/Script/Core/MVC/Module.js 解析出模块 __unresolved_1。
-2021-11-22 17:18:37-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:19:01-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:19:09-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:19:22-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:19:29-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:23:36-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:23:47-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:24:22-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:24:30-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:41:50-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:41:57-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:44:05-error: [Scene] AppFacade is not a constructor
-2021-11-22 17:44:31-error: [Scene] AppFacade is not a constructor
-2021-11-22 18:45:35-error: getImSetting failed
-2021-11-22 19:06:38-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:29:02-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:34:07-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:34:21-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:34:31-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:34:40-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:37:08-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:37:14-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:38:50-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:39:43-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:40:15-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:40:34-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:42:01-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:43:46-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:43:52-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:47:25-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:48:31-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:48:51-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:52:44-error: [Scene] AppFacade is not a constructor
-2021-11-22 19:53:05-error: [Scene] AppFacade is not a constructor
-2021-11-22 20:00:57-error: [Scene] AppFacade is not a constructor
-2021-11-22 20:01:01-error: [Scene] AppFacade is not a constructor
-2021-11-22 20:02:09-error: [Scene] AppFacade is not a constructor
-2021-11-22 20:02:17-error: [Scene] AppFacade is not a constructor
-2021-11-22 20:02:17-error: [Scene] A Class already exists with the same __classname__ : "AlertMgr".
-2021-11-22 20:02:17-error: [Scene] A Class already exists with the same __cid__ : "70652RBVYZMCr48biPHvrMo".
-2021-11-22 20:21:31-error: [Scene] AppFacade is not a constructor
-2021-11-22 20:23:49-error: [Scene] AppFacade is not a constructor
-2021-11-22 20:32:14-error: [Scene] AppFacade is not a constructor
-2021-11-23 11:27:30-error: getImSetting failed
-2021-11-23 11:28:56-error: [Scene] AppFacade is not a constructor
-2021-11-23 11:41:41-error: [Scene] AppFacade is not a constructor
-2021-11-23 11:45:13-error: [Scene] AppFacade is not a constructor
-2021-11-23 11:46:26-error: [Scene] AppFacade is not a constructor
-2021-11-23 11:52:00-error: [Scene] AppFacade is not a constructor
-2021-11-23 11:53:05-error: [Scene] AppFacade is not a constructor
-2021-11-23 11:59:17-error: [Scene] AppFacade is not a constructor
-2021-11-23 12:02:28-error: [Scene] AppFacade is not a constructor
-2021-11-23 12:02:46-error: [Scene] AppFacade is not a constructor
-2021-11-23 13:10:45-error: getImSetting failed
-2021-11-23 13:28:24-error: [Scene] AppFacade is not a constructor
-2021-11-23 13:29:22-error: [Scene] AppFacade is not a constructor
-2021-11-23 14:30:38-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:06:05-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:06:32-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:06:37-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:06:52-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:10:19-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:10:29-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:10:59-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:11:08-error: [Scene] A Class already exists with the same __classname__ : "BaseView".
-2021-11-23 19:11:08-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:11:21-error: [Scene] A Class already exists with the same __classname__ : "BaseView".
-2021-11-23 19:11:21-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:13:43-error: [Scene] A Class already exists with the same __classname__ : "BaseView".
-2021-11-23 19:13:43-error: [Scene] AppFacade is not a constructor
-2021-11-23 19:13:52-error: [Scene] A Class already exists with the same __classname__ : "BaseView".
-2021-11-23 19:13:52-error: [Scene] AppFacade is not a constructor
-2021-11-24 11:44:06-error: [Scene] A Class already exists with the same __classname__ : "BaseView".
-2021-11-24 11:44:06-error: [Scene] AppFacade is not a constructor
+2021-11-25 19:54:59-warn: [Scene] can't find node in current scene: a6mgEkHcFGsIGo7Pl/D3HS
+2021-11-25 19:54:59-warn: [Scene] can't find node in current scene: a6mgEkHcFGsIGo7Pl/D3HS
+2021-11-25 19:58:45-error: [preview-error]Uncaught TypeError: The thing you want to instantiate is nil in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-11-25 20:03:26-error: [preview-error]Uncaught TypeError: The thing you want to instantiate is nil in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-11-25 20:04:54-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'width') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Core/MVC/Mediator.js

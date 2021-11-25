@@ -2,21 +2,21 @@
     "Game": {
         "Start":      {
             "packageNick": "公共",
-            "preAssets": ["MaskUI","AlertViewUI", "LoadingViewUI", "TipsViewUI", "HotUpdateViewUI", "ReconnectViewUI"],
+            "preAssets": [],
             "preAtalas": [],
-            "packageName": "Start"
+            "isLoaded": false
         },
         "Main":   {
             "packageNick": "主场景",
             "preAssets": [],
             "preAtalas": [],
-            "packageName": "Main"
+            "isLoaded": false
         },
         "Battle":{
             "packageNick": "游戏",
             "preAssets": [],
             "preAtalas": [],
-            "packageName": "Battle"
+            "isLoaded": false
         }
     },
 

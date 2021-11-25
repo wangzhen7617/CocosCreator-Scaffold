@@ -15,8 +15,12 @@ const { ccclass, property } = _decorator;
  *
  */
 
-@ccclass('AppFacade')
-export class AppFacade extends Component {
+// @ccclass('AppFacade')
+export class AppFacade {
+
+    private constructor() {
+
+    }
 
     /** 实例对象 */
     private static _instance: AppFacade = new AppFacade();
@@ -28,6 +32,7 @@ export class AppFacade extends Component {
     public static getInstance(): AppFacade {
         return this._instance;
     }
+
 
     public registerProxy(name: string, proxyObj: any): void {
         proxyObj.setDispatcher(this._dispatcher);
