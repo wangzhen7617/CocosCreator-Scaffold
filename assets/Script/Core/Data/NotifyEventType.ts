@@ -20,7 +20,7 @@ const { ccclass, property } = _decorator;
 export class NotifyEventType extends Component {
 
     //hotupdate
-
+    public static HOT_UPDATE_SWITCH_NEXT: string = 'HOT_UPDATE_SWITCH_NEXT';
     //login
 
     //network

@@ -1,6 +1,10 @@
 
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, game, Game, log } from 'cc';
+import { GameType } from '../../Core/Data/GameType';
+import { NotifyEventType } from '../../Core/Data/NotifyEventType';
+import { AssetsMgr } from '../../Core/Mgr/AssetsMgr';
 import { Proxy } from '../../Core/MVC/Proxy';
+import { SceneType } from '../Scene/Data/SceneType';
 import { HotUpdateVO } from './Data/HotUpdateVO';
 const { ccclass, property } = _decorator;
 
@@ -26,7 +30,34 @@ export class HotUpdateProxy extends Proxy {
         this.vo = new HotUpdateVO();
     }
 
-    protected addEvent(): void { }
+    protected addEvent(): void {
+        //原生代码发送过来的事件
+        game.on(Game.EVENT_HIDE, this.onGameHide, this);
+        game.on(Game.EVENT_SHOW, this.onGameShow, this);
+
+        this.addNotification(NotifyEventType.HOT_UPDATE_SWITCH_NEXT, this.switchGame)
+    }
+
+    private onGameHide(): void {
+        log("onGameHide");
+    }
+
+
+    private onGameShow(): void {
+        log("onGameShow");
+    }
+
+    private switchGame() {
+        AssetsMgr.loadGame(
+            GameType.Login,
+            false,
+            () => {
+                this.sendNotification(NotifyEventType.SCENE_SWITCH_SCENE, SceneType.Login);
+            },
+            false
+        );
+    }
+
 }
 
 /**

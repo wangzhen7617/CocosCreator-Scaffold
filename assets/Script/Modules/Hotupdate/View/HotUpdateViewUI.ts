@@ -1,9 +1,10 @@
 
-import { _decorator, Component, Node, sys, JsonAsset, AssetManager } from 'cc';
+import { _decorator, Component, Node, sys, JsonAsset, AssetManager, Label, Game } from 'cc';
 import { BUILD, JSB } from 'cc/env';
 import { BaseView } from '../../../Core/Base/BaseView';
 import { GameType } from '../../../Core/Data/GameType';
 import { GlobalParams } from '../../../Core/Data/GlobalParams';
+import { NotifyEventType } from '../../../Core/Data/NotifyEventType';
 import { AssetsMgr } from '../../../Core/Mgr/AssetsMgr';
 import { UIMgr } from '../../../Core/Mgr/UIMgr';
 const { ccclass, property } = _decorator;
@@ -27,6 +28,8 @@ export class HotUpdateView extends BaseView {
 
     @property(JsonAsset)
     cfgJson: JsonAsset = null;
+    @property(Label)
+    tip: Label = null;
 
     start() {
         super.start();
@@ -61,8 +64,17 @@ export class HotUpdateView extends BaseView {
         // }
         GlobalParams.localGameInfo = json.Game;;
 
-        //todo
-        // AssetsMgr.loadGame(GameType.Start, false, this.onLoadCallback, false);
+        // let _t = 3;
+        // this.schedule(() => {
+        //     this.tip.string = `${_t}秒后跳转`
+        //     _t--
+        //     if (_t <= 0) {
+        //         //todo
+        //         // AssetsMgr.loadGame(GameType.Start, false, this.onLoadCallback, false);
+
+        //     }
+        // }, 1, 2)
+        this.sendEvent(NotifyEventType.HOT_UPDATE_SWITCH_NEXT, "test")
     }
 
     onLoadCallback() {

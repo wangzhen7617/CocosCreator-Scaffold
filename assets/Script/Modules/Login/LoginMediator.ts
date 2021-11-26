@@ -1,9 +1,8 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { ModuleType } from '../../Core/Data/ModuleType';
 import { NotifyEventType } from '../../Core/Data/NotifyEventType';
 import { Mediator } from '../../Core/MVC/Mediator';
-import { HotUpdateModule } from './HotUpdateModule';
+import { LoginModule } from './LoginModule';
 const { ccclass, property } = _decorator;
 
 /**
@@ -11,34 +10,33 @@ const { ccclass, property } = _decorator;
  * github = https://github.com/wangzhen7617/CocosCreator-Scaffold
  * 
  * Predefined variables
- * DateTime = Mon Nov 22 2021 19:34:21 GMT+0800 (中国标准时间)
+ * DateTime = Fri Nov 26 2021 19:37:46 GMT+0800 (中国标准时间)
  * Author = <wangzhen7617>
- * FileBasename = HotUpdateMediator.ts
- * FileBasenameNoExtension = HotUpdateMediator
- * URL = db://assets/Script/Modules/Hotupdate/HotUpdateMediator.ts
+ * FileBasename = LoginMediator.ts
+ * FileBasenameNoExtension = LoginMediator
+ * URL = db://assets/Script/Modules/Login/LoginMediator.ts
  * ManualUrl = https://docs.cocos.com/creator/3.3/manual/zh/
  *
  */
 
-@ccclass('HotUpdateMediator')
-export class HotUpdateMediator extends Mediator {
+@ccclass('LoginMediator')
+export class LoginMediator extends Mediator {
 
-    constructor() {
-        super();
+    protected addEvent(): void {
     }
-
-    protected addEvent(): void { }
 
     protected addModuleEvent(): void {
         super.addModuleEvent();
+        this.addUISendOutEvent(NotifyEventType.SOCKET_CREATE_GAME_SOCKET);
         this.addUISendOutEvent(NotifyEventType.NETWORK_REQUEST_HTTP);
-        this.addUISendOutEvent(NotifyEventType.HOT_UPDATE_SWITCH_NEXT)
     }
 
+    protected removeModuleEvent(): void {
+        super.removeModuleEvent();
+    }
     public getNewUI(): any {
-        return new HotUpdateModule(ModuleType.HOT_UPDATE);
+        return new LoginModule();
     }
-
 }
 
 /**

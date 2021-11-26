@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, log } from 'cc';
 import { AppFacade } from './AppFacade';
 import { Dispatcher } from './Dispatcher';
 import { DispatcherEvent } from './DispatcherEvent';
@@ -40,6 +40,7 @@ export class Proxy extends Component {
     }
 
     protected addNotification = (eventName: string, handler: (this: void, event: DispatcherEvent) => void): void => {
+        log('======Proxy=addNotification======', eventName)
         this._dispatcher.on(eventName, handler, this);
         this.eventList[eventName] = handler;
     };

@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Canvas } from 'cc';
+import { _decorator, Component, Node, Canvas, log } from 'cc';
 import { BaseInterface } from './BaseInterface';
 const { ccclass, property } = _decorator;
 
@@ -21,6 +21,8 @@ const { ccclass, property } = _decorator;
 export class BaseScene extends Component {
 
     protected start() {
+
+        log("run scene " + this.name)
         this.initView();
         this.addEvent();
         this.customInit();

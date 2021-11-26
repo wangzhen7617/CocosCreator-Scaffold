@@ -7,19 +7,21 @@ const { ccclass, property } = _decorator;
  * github = https://github.com/wangzhen7617/CocosCreator-Scaffold
  * 
  * Predefined variables
- * DateTime = Mon Nov 22 2021 19:48:31 GMT+0800 (中国标准时间)
+ * DateTime = Fri Nov 26 2021 19:49:29 GMT+0800 (中国标准时间)
  * Author = <wangzhen7617>
- * FileBasename = SceneType.ts
- * FileBasenameNoExtension = SceneType
- * URL = db://assets/Script/Modules/Scene/Data/SceneType.ts
+ * FileBasename = LoginViewUI.ts
+ * FileBasenameNoExtension = LoginViewUI
+ * URL = db://assets/Script/Modules/Login/View/LoginViewUI.ts
  * ManualUrl = https://docs.cocos.com/creator/3.3/manual/zh/
  *
  */
+ 
+@ccclass('LoginViewUI')
+export class LoginViewUI extends Component {
 
-@ccclass('SceneType')
-export class SceneType extends Component {
-    public static Start: string = "Start";
-    public static Login: string = "Login"
+    start () {
+    }
+
 }
 
 /**

@@ -71,7 +71,7 @@ export class AssetsMgr extends Component {
         log('startReloadModule.................', moduleName);
         let localGameInfo: any = GlobalParams.localGameInfo[moduleName];
         let fixAssetsArr: Array<string> = [];
-        let assetsArr: Array<string> = localGameInfo[moduleName].preAssets;
+        let assetsArr: Array<string> = localGameInfo.preAssets;
         if (assetsArr) {
             assetsArr.forEach(element => {
                 fixAssetsArr.push('Prefabs/' + element);
@@ -99,7 +99,7 @@ export class AssetsMgr extends Component {
     private static checkModuleAtlas(moduleName: string): void {
         log('checkModuleAtlas...................', moduleName);
         let localGameInfo: any = GlobalParams.localGameInfo[moduleName];
-        let atlas: Array<string> = localGameInfo[moduleName].preAtlas;
+        let atlas: Array<string> = localGameInfo.preAtlas;
         let fixAtlasArr: Array<string> = [];
         if (atlas) {
             atlas.forEach((element) => {

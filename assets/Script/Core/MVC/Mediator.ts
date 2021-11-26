@@ -1,5 +1,6 @@
 
 import { _decorator, Component, Node, CCObject, UITransform } from 'cc';
+import { NotifyEventType } from '../Data/NotifyEventType';
 import { UIMgr } from '../Mgr/UIMgr';
 import { AppFacade } from './AppFacade';
 import { Dispatcher } from './Dispatcher';
@@ -97,8 +98,12 @@ export class Mediator extends Component {
         return new Dispatcher();
     }
 
+    /**
+     * 
+     */
     protected addModuleEvent(): void {
         // this.getModuleDispatcher().on(ModuleEventType.MODULE_UI_EMPTY,this.onModuleUIEmpty,this);
+        this.addUISendOutEvent(NotifyEventType.SCENE_SWITCH_SCENE);
     }
 
     protected removeModuleEvent(): void {

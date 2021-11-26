@@ -6,6 +6,12 @@
             "preAtalas": [],
             "isLoaded": false
         },
+        "Login":      {
+            "packageNick": "登录",
+            "preAssets": ["LoginViewUI"],
+            "preAtalas": [],
+            "isLoaded": false
+        },
         "Main":   {
             "packageNick": "主场景",
             "preAssets": [],
