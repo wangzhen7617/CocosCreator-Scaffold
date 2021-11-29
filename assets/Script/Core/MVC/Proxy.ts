@@ -33,14 +33,13 @@ export class Proxy extends Component {
 
     protected addEvent(): void { }
 
-    protected removeEvent(): void {
+    public removeEvent(): void {
         for (let i in this.eventList) {
             this.removeNotification(i, this.eventList[i]);
         }
     }
 
     protected addNotification = (eventName: string, handler: (this: void, event: DispatcherEvent) => void): void => {
-        log('======Proxy=addNotification======', eventName)
         this._dispatcher.on(eventName, handler, this);
         this.eventList[eventName] = handler;
     };
@@ -50,7 +49,7 @@ export class Proxy extends Component {
     };
 
     protected sendNotification = (eventName: string, data?: any): void => {
-        this._dispatcher.emit(eventName, data);
+        this._dispatcher.emit(eventName, data)
     };
 
     public getVO = (): any => {
@@ -58,14 +57,14 @@ export class Proxy extends Component {
     };
 
     public getModuleVO = (type: string): any => {
-        let proxy: any = this.getProxy(type);
+        let proxy = this.getProxy(type);
         if (proxy) {
             return proxy.getVO();
         }
         return {};
     };
 
-    public getProxy(type: string) {
+    public getProxy(type: string): Proxy {
         return AppFacade.getInstance().getProxy(type);
     }
 }

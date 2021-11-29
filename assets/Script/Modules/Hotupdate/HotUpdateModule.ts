@@ -22,8 +22,7 @@ const { ccclass, property } = _decorator;
 export class HotUpdateModule extends Module {
 
     constructor(name: string) {
-        super();
-        this.name = name
+        super(name);
         this.pushView('HotUpdateViewUI', false);
     }
 

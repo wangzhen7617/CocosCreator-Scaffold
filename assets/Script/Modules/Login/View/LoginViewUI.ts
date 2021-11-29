@@ -1,5 +1,9 @@
 
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, CCObject, Event, Label } from 'cc';
+import { BaseModule } from '../../../Core/Base/BaseModule';
+import { BaseView } from '../../../Core/Base/BaseView';
+import { NotifyEventType } from '../../../Core/Data/NotifyEventType';
+import { SysEventType } from '../../../Core/Data/SysEventType';
 const { ccclass, property } = _decorator;
 
 /**
@@ -15,11 +19,40 @@ const { ccclass, property } = _decorator;
  * ManualUrl = https://docs.cocos.com/creator/3.3/manual/zh/
  *
  */
- 
-@ccclass('LoginViewUI')
-export class LoginViewUI extends Component {
 
-    start () {
+@ccclass('LoginViewUI')
+export class LoginViewUI extends BaseModule {
+
+    @property(Node)
+    btnPostUrl: Node = null;
+    @property(Label)
+    InfoLab: Label = null;
+
+    start() {
+        super.start()
+    }
+
+    protected initView() {
+        this.InfoLab.string = 'This Is LoginViewUI'
+    }
+
+    protected addEvent() {
+        this.btnPostUrl.on(SysEventType.CLICK, this.clickPostUrl, this)
+        this.attachEvent(NotifyEventType.TEST_ON_POST, this.onPostRes, this)
+    }
+
+    protected removeEvent() {
+        this.btnPostUrl.off(SysEventType.CLICK, this.clickPostUrl, this)
+        this.detachEvent(NotifyEventType.TEST_ON_POST, this.onPostRes, this)
+
+    }
+
+    private clickPostUrl() {
+        this.sendEvent(NotifyEventType.TEST_TO_POST, { ip: '127.0.0.1' })
+    }
+
+    private onPostRes(data: any) {
+        this.InfoLab.string = JSON.stringify(data)
     }
 
 }

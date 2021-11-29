@@ -3,6 +3,7 @@ import { _decorator, Component, Node, director, log, sys } from 'cc';
 import { GlobalParams } from '../../Core/Data/GlobalParams';
 import { NotifyEventType } from '../../Core/Data/NotifyEventType';
 import { UIMgr } from '../../Core/Mgr/UIMgr';
+import { DispatcherEvent } from '../../Core/MVC/DispatcherEvent';
 import { Proxy } from '../../Core/MVC/Proxy';
 const { ccclass, property } = _decorator;
 
@@ -30,9 +31,8 @@ export class SceneProxy extends Proxy {
         this.addNotification(NotifyEventType.SCENE_SWITCH_SCENE, this.onSwitchScene);
     }
 
-    private onSwitchScene = (data: any): void => {
-        log('currentSceneName.......', GlobalParams.currentSceneName);
-        let pSceneName: any = data;
+    private onSwitchScene = (event: DispatcherEvent): void => {
+        let pSceneName: any = event.detail;
         if (GlobalParams.currentSceneName == pSceneName) return;
         GlobalParams.currentSceneName = pSceneName;
         //TODO
@@ -44,7 +44,6 @@ export class SceneProxy extends Proxy {
         if (sys.isNative) {
             sys.garbageCollect();
         }
-        log('load new scene .......' + pSceneName);
         director.loadScene(pSceneName);
     };
 }

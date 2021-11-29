@@ -71,3 +71,49 @@
 2021-11-26 19:51:00-error: 无法从 cce:/internal/x/prerequisite-imports 解析出模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Login/LoginProxy-001.ts，已将其视为外部模块。
 这是因为：Error: 以 cce:/internal/x/prerequisite-imports 为起点找不到模块 "file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Login/LoginProxy-001.ts"
 2021-11-26 20:06:51-error: [preview-error]Uncaught TypeError: Cannot read properties of undefined (reading 'preAssets') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Core/Mgr/AssetsMgr.js
+2021-11-27 04:47:11-error: getImSetting failed
+2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../../core/mvc/IProxy，已将其视为外部模块。
+这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../../core/mvc/IProxy"
+2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
+2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../../core/mgr/AlertManager，已将其视为外部模块。
+这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../../core/mgr/AlertManager"
+2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
+2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../utils/PBBuild，已将其视为外部模块。
+这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../utils/PBBuild"
+2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
+2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../login/data/LoginState，已将其视为外部模块。
+这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../login/data/LoginState"
+2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
+2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../../core/mvc/IProxy，已将其视为外部模块。
+这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../../core/mvc/IProxy"
+2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
+2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../../core/mgr/AlertManager，已将其视为外部模块。
+这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../../core/mgr/AlertManager"
+2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
+2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../utils/PBBuild，已将其视为外部模块。
+这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../utils/PBBuild"
+2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
+2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../login/data/LoginState，已将其视为外部模块。
+这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../login/data/LoginState"
+2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
+2021-11-29 14:35:49-error: [Scene] 无法从 pack:///mods/fs/0/assets/Script/Modules/Network/NetworkProxy.js 解析出模块 __unresolved_1。
+2021-11-29 14:37:11-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/Data/NetworkVO.ts ：SyntaxError: unknown: Unexpected token (2:27)
+
+  1 |
+> 2 | import { _decorator } from cc;
+    |                            ^
+  3 | const { ccclass, property } = _decorator;
+  4 |
+  5 | @ccclass.
+2021-11-29 14:37:11-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/Data/NetworkVO.ts ：SyntaxError: unknown: Unexpected token (2:27)
+
+  1 |
+> 2 | import { _decorator } from cc;
+    |                            ^
+  3 | const { ccclass, property } = _decorator;
+  4 |
+  5 | @ccclass.
+2021-11-29 14:37:11-error: [Scene] 无法从 pack:///mods/fs/0/assets/Script/Modules/Network/NetworkProxy.js 解析出模块 __unresolved_1。
+2021-11-29 14:38:05-error: [Scene] 无法从 pack:///mods/fs/0/assets/Script/Modules/Network/NetworkProxy.js 解析出模块 __unresolved_1。
+2021-11-29 17:42:23-error: [preview-error]Uncaught TypeError: name.endsWith is not a function in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-11-29 20:15:44-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'name') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Core/MVC/Mediator.js

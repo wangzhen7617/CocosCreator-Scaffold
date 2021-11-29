@@ -47,6 +47,11 @@ export class NotifyEventType extends Component {
     //room
     public static ROOM_SEND_ENTER_SCENE: string = 'ROOM_SEND_ENTER_SCENE';
     public static ROOM_SEND_LEAVE_SCENE: string = 'ROOM_SEND_LEAVE_SCENE';
+
+
+    public static TEST_TO_POST: string = 'TEST_TO_POST'
+    public static TEST_ON_POST: string = 'TEST_ON_POST'
+
 }
 
 /**

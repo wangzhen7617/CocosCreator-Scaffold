@@ -1,5 +1,7 @@
 
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, warn } from 'cc';
+import { NotifyEventType } from '../../Core/Data/NotifyEventType';
+import { DispatcherEvent } from '../../Core/MVC/DispatcherEvent';
 import { Proxy } from '../../Core/MVC/Proxy';
 import { LoginVO } from './Data/LoginVO';
 const { ccclass, property } = _decorator;
@@ -17,7 +19,7 @@ const { ccclass, property } = _decorator;
  * ManualUrl = https://docs.cocos.com/creator/3.3/manual/zh/
  *
  */
- 
+
 @ccclass('LoginProxy')
 export class LoginProxy extends Proxy {
 
@@ -27,6 +29,22 @@ export class LoginProxy extends Proxy {
     }
 
     protected addEvent(): void {
+        this.addNotification(NotifyEventType.TEST_TO_POST, this.testToPost)
+    }
+
+
+    private testToPost(event: DispatcherEvent) {
+        let url: string = "http://118.178.89.126/api/ip"
+        this.sendNotification(NotifyEventType.NETWORK_REQUEST_HTTP, {
+            requestType: 'POST',
+            postData: 'ip=' + event.detail.ip,
+            url: url + '?accessKey=alibaba-inc',
+            handler: (res: any) => {
+                this.sendNotification(NotifyEventType.TEST_ON_POST, res)
+            },
+            errHandler: (err: any) => {
+            },
+        });
     }
 }
 

@@ -21,8 +21,6 @@ const { ccclass, property } = _decorator;
 export class BaseScene extends Component {
 
     protected start() {
-
-        log("run scene " + this.name)
         this.initView();
         this.addEvent();
         this.customInit();

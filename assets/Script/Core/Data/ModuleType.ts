@@ -28,6 +28,7 @@ export class ModuleType extends Component {
     static RECONNECT: string = 'Reconnect';
     static Battle: string = 'Battle';
 }
+
 /**
  * [1] Class member could be defined like this.
  * [2] Use `property` decorator if your want the member to be serializable.

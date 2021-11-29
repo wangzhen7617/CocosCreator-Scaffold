@@ -42,7 +42,6 @@ export class AssetsMgr extends Component {
                     warn('prefab加载失败', error);
                     // return;
                 }
-                log(assets)
                 callBack()
             }
         );
@@ -51,7 +50,6 @@ export class AssetsMgr extends Component {
 
 
     public static loadGame(moduleName: string, refresh: boolean, cb: (this: void, error?: any, assets?: any) => void, showLoading: boolean = true): void {
-        log('==============================reloadModule===================', new Date());
         if (GlobalParams.localGameInfo[moduleName].isLoaded && !refresh) {
             cb();
             return;
@@ -68,7 +66,6 @@ export class AssetsMgr extends Component {
     }
 
     private static startReloadModule(moduleName?: string): void {
-        log('startReloadModule.................', moduleName);
         let localGameInfo: any = GlobalParams.localGameInfo[moduleName];
         let fixAssetsArr: Array<string> = [];
         let assetsArr: Array<string> = localGameInfo.preAssets;
@@ -97,7 +94,6 @@ export class AssetsMgr extends Component {
     }
 
     private static checkModuleAtlas(moduleName: string): void {
-        log('checkModuleAtlas...................', moduleName);
         let localGameInfo: any = GlobalParams.localGameInfo[moduleName];
         let atlas: Array<string> = localGameInfo.preAtlas;
         let fixAtlasArr: Array<string> = [];
@@ -131,7 +127,6 @@ export class AssetsMgr extends Component {
     }
 
     private static moduleLoadComplete(moduleName: string): void {
-        log('moduleLoadComplete...................', moduleName);
         GlobalParams.localGameInfo[moduleName].isLoaded = true;
         this.isLoading = false;
         UIMgr.hideLoading();

@@ -1,6 +1,7 @@
 
 import { _decorator, Component, Node, sys, JsonAsset, AssetManager, Label, Game } from 'cc';
 import { BUILD, JSB } from 'cc/env';
+import { BaseModule } from '../../../Core/Base/BaseModule';
 import { BaseView } from '../../../Core/Base/BaseView';
 import { GameType } from '../../../Core/Data/GameType';
 import { GlobalParams } from '../../../Core/Data/GlobalParams';
@@ -24,7 +25,7 @@ const { ccclass, property } = _decorator;
  */
 
 @ccclass('HotUpdateView')
-export class HotUpdateView extends BaseView {
+export class HotUpdateView extends BaseModule {
 
     @property(JsonAsset)
     cfgJson: JsonAsset = null;
@@ -49,9 +50,8 @@ export class HotUpdateView extends BaseView {
     protected removeEvent(): void { }
 
     protected onDestroy(): void { }
-    private initHotUpdate(): void {
 
-    }
+    private initHotUpdate(): void { }
 
     private runGame() {
 

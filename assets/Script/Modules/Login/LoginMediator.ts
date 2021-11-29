@@ -1,5 +1,6 @@
 
 import { _decorator, Component, Node } from 'cc';
+import { ModuleType } from '../../Core/Data/ModuleType';
 import { NotifyEventType } from '../../Core/Data/NotifyEventType';
 import { Mediator } from '../../Core/MVC/Mediator';
 import { LoginModule } from './LoginModule';
@@ -23,12 +24,13 @@ const { ccclass, property } = _decorator;
 export class LoginMediator extends Mediator {
 
     protected addEvent(): void {
+        this.addSendToUIEvent(NotifyEventType.TEST_ON_POST)
     }
 
     protected addModuleEvent(): void {
         super.addModuleEvent();
-        this.addUISendOutEvent(NotifyEventType.SOCKET_CREATE_GAME_SOCKET);
         this.addUISendOutEvent(NotifyEventType.NETWORK_REQUEST_HTTP);
+        this.addUISendOutEvent(NotifyEventType.TEST_TO_POST);
     }
 
     protected removeModuleEvent(): void {

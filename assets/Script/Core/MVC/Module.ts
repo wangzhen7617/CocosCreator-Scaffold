@@ -32,11 +32,11 @@ export class Module extends Node {
     private savedUIList: Array<any> = [];
     private lastPopUIName: string = '';
 
-    constructor() {
+    constructor(name: string) {
         super();
         this.dispatcher = new Dispatcher();
         this.uiStack = new Stack();
-
+        this.name = this.getModuleName();
         this.mask = instantiate(resources.get('Prefabs/MaskViewUI'));
         this.mask.zIndex = 500;
 
@@ -146,7 +146,6 @@ export class Module extends Node {
         //     warn('module 賦值失敗...................');
         // }
         this.lastPopUIName = '';
-        log('======nweUI====', uiName);
         this.addChild(newUI);
         this.dispatcher.emit(ModuleEventType.MODULE_TOP_UI_CHANGE, uiName);
         if (showAnimation && !GlobalParams.isAppBackGround) {
@@ -211,19 +210,17 @@ export class Module extends Node {
         } else {
             this.uiStack.remove(view);
         }
-        let topUI: any = this.uiStack.top();
+        let topUI = this.uiStack.top();
         if (topUI != null) {
             topUI.active = true;
         }
         this.dispatcher.emit(ModuleEventType.MODULE_TOP_UI_CHANGE, topUI.name);
         if (isValid(oldUI)) {
             if (this.lastPopUIName == oldUI.name) {
-                log('===uiName相同，pop失败====');
+                warn(this.getModuleName() + ' uiName相同');
                 return;
             }
             this.lastPopUIName = oldUI.name;
-
-            log('=====pop view=====', oldUI.name);
             if (showAnimation && !GlobalParams.isAppBackGround) {
                 this.uiChanging = true;
                 oldUI.stopAllActions();
@@ -254,7 +251,7 @@ export class Module extends Node {
                 }
             }
         } else {
-            log('=========old ui is null===========');
+            warn(this.getModuleName + ' oldUI is not valid ');
         }
     }
 
@@ -277,7 +274,7 @@ export class Module extends Node {
     }
 
     public getModuleName(): string {
-        throw 'IModule: please override this function';
+        throw 'Module: please override this function';
     }
 
     public getTopUIName(): string {

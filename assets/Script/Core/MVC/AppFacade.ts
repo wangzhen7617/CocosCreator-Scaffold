@@ -1,6 +1,8 @@
 
 import { _decorator, Component, Node } from 'cc';
 import { Dispatcher } from './Dispatcher';
+import { Mediator } from './Mediator';
+import { Proxy } from './Proxy';
 const { ccclass, property } = _decorator;
 
 /**
@@ -26,22 +28,22 @@ export class AppFacade {
     private static _instance: AppFacade = new AppFacade();
 
     private _dispatcher: Dispatcher = new Dispatcher();
-    private _proxys: { [index: string]: any } = {};
-    private _mediators: { [index: string]: any } = {};
+    private _proxys: { [index: string]: Proxy } = {};
+    private _mediators: { [index: string]: Mediator } = {};
 
     public static getInstance(): AppFacade {
         return this._instance;
     }
 
 
-    public registerProxy(name: string, proxyObj: any): void {
+    public registerProxy(name: string, proxyObj: Proxy): void {
         proxyObj.setDispatcher(this._dispatcher);
         AppFacade.getInstance()._proxys[name] = proxyObj;
     }
 
-    public registerMediator(name: string, mediatorObj: any): void {
+    public registerMediator(name: string, mediatorObj: Mediator): void {
         mediatorObj.setDispatcher(this._dispatcher);
-        let proxyObj: any = AppFacade.getInstance().getProxy(name);
+        let proxyObj = AppFacade.getInstance().getProxy(name);
         mediatorObj.setProxy(proxyObj);
         AppFacade.getInstance()._mediators[name] = mediatorObj;
     }

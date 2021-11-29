@@ -36,7 +36,7 @@ export class HotUpdateMediator extends Mediator {
     }
 
     public getNewUI(): any {
-        return new HotUpdateModule(ModuleType.HOT_UPDATE);
+        return new HotUpdateModule();
     }
 
 }

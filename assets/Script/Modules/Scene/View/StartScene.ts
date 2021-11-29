@@ -11,6 +11,7 @@ import { HotUpdateMediator } from '../../Hotupdate/HotUpdateMediator';
 import { HotUpdateProxy } from '../../Hotupdate/HotUpdateProxy';
 import { LoginMediator } from '../../Login/LoginMediator';
 import { LoginProxy } from '../../Login/LoginProxy';
+import { NetworkProxy } from '../../Network/NetworkProxy';
 import { SceneType } from '../Data/SceneType';
 import { SceneProxy } from '../SceneProxy';
 const { ccclass, property } = _decorator;
@@ -51,7 +52,7 @@ export class StartScene extends BaseScene {
 
 
         // AppFacade.getInstance().registerProxy(ModuleType.SOCKET, new SocketProxy());
-        // AppFacade.getInstance().registerProxy(ModuleType.NETWORK, new NetworkProxy());
+        AppFacade.getInstance().registerProxy(ModuleType.NETWORK, new NetworkProxy());
         // AppFacade.getInstance().registerProxy(ModuleType.RECONNECT, new ReconnectProxy());
         // AppFacade.getInstance().registerMediator(ModuleType.RECONNECT, new ReconnectMediator());
         AssetsMgr.init(this.assetsComplete);
@@ -65,9 +66,7 @@ export class StartScene extends BaseScene {
         UIMgr.showModule(ModuleType.HOT_UPDATE);
     };
 
-    protected initView() {
-        log("Start Scene init View");
-    }
+    protected initView() { }
 }
 
 /**
