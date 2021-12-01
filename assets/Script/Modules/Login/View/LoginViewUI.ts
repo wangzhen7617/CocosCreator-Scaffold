@@ -25,6 +25,13 @@ export class LoginViewUI extends BaseModule {
 
     @property(Node)
     btnPostUrl: Node = null;
+
+    @property(Node)
+    btnCreateWS: Node = null;
+    @property(Node)
+    btnSendPackage: Node = null;
+
+
     @property(Label)
     InfoLab: Label = null;
 
@@ -38,11 +45,17 @@ export class LoginViewUI extends BaseModule {
 
     protected addEvent() {
         this.btnPostUrl.on(SysEventType.CLICK, this.clickPostUrl, this)
+        this.btnCreateWS.on(SysEventType.CLICK, this.clickCreateWs, this)
+        this.btnSendPackage.on(SysEventType.CLICK, this.clickSendPACKAGE, this)
+
         this.attachEvent(NotifyEventType.TEST_ON_POST, this.onPostRes, this)
     }
 
     protected removeEvent() {
         this.btnPostUrl.off(SysEventType.CLICK, this.clickPostUrl, this)
+        this.btnCreateWS.off(SysEventType.CLICK, this.clickCreateWs, this)
+        this.btnSendPackage.off(SysEventType.CLICK, this.clickSendPACKAGE, this)
+
         this.detachEvent(NotifyEventType.TEST_ON_POST, this.onPostRes, this)
 
     }
@@ -53,6 +66,14 @@ export class LoginViewUI extends BaseModule {
 
     private onPostRes(data: any) {
         this.InfoLab.string = JSON.stringify(data)
+    }
+
+    private clickCreateWs() {
+        this.sendEvent(NotifyEventType.TEST_CREATE_WEBSOCKET, { ws: "ws://121.40.165.18:8800" })  //地址来自：http://www.websocket-test.com/
+    }
+
+    private clickSendPACKAGE() {
+
     }
 
 }

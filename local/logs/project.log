@@ -1,119 +1,108 @@
-2021-11-26 19:36:41-log: [Package] menu@1.0.0 enable
-2021-11-26 19:36:41-log: [Package] profile@1.0.0 enable
-2021-11-26 19:36:41-log: [Package] messages@1.0.0 enable
-2021-11-26 19:36:41-log: [Package] program@1.0.0 enable
-2021-11-26 19:36:41-log: [Package] device@1.0.1 enable
-2021-11-26 19:36:41-log: [Package] ui-kit@1.0.1 enable
-2021-11-26 19:36:41-log: [Package] tester@1.0.0 enable
-2021-11-26 19:36:41-log: [Package] preferences@1.0.0 enable
-2021-11-26 19:36:42-log: Setup mods mgr.: 228.764ms
-2021-11-26 19:36:42-log: [Package] engine@1.0.5 enable
-2021-11-26 19:36:44-log: [Package] programming@1.0.0 enable
-2021-11-26 19:36:44-log: [Package] asset-db@1.0.0 enable
-2021-11-26 19:36:44-log: [Package] console@1.0.0 enable
-2021-11-26 19:36:44-log: [Package] scene@1.0.0 enable
-2021-11-26 19:36:44-log: [Package] server@1.0.0 enable
-2021-11-26 19:36:44-log: [Package] utils@1.0.0 enable
-2021-11-26 19:36:44-log: [Package] assets@1.0.0 enable
-2021-11-26 19:36:44-log: [Package] inspector@1.0.0 enable
-2021-11-26 19:36:44-log: [Package] hierarchy@1.0.0 enable
-2021-11-26 19:36:45-log: [Package] preview@1.0.1 enable
-2021-11-26 19:36:45-log: [Package] animator@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] builder@1.2.9 enable
-2021-11-26 19:36:46-log: [Package] node-library@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] shortcuts@1.0.1 enable
-2021-11-26 19:36:46-log: [Package] package-asset@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] reference-image@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] channel-upload-tools@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] runtime-dev-tools@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] alipay-mini-game@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] android@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] baidu-mini-game@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] bytedance-mini-game@1.0.1 enable
-2021-11-26 19:36:46-log: [Package] huawei-agc@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] ios@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] ios-app-clip@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] mac@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] native@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] ohos@1.0.0 enable
-2021-11-26 19:36:46-log: [Package] web-desktop@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] web-mobile@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] wechatgame@1.0.1 enable
-2021-11-26 19:36:47-log: [Package] windows@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] xiaomi-quick-game@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] cocos-play@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] huawei-quick-game@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] link-sure@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] oppo-mini-game@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] qtt@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] vivo-mini-game@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] cocos-service@3.0.1 enable
-2021-11-26 19:36:47-log: [Package] importer@1.0.0 enable
-2021-11-26 19:36:47-log: [Package] extension@3.0.10 enable
-2021-11-26 19:36:48-log: [Im-plugin] Check im-plugin version.
-2021-11-26 19:36:48-log: [Package] im-plugin@3.0.7 enable
-2021-11-26 19:36:48-log: [Package] lightmap@1.0.3 enable
-2021-11-26 19:36:48-log: [Scene] begin init
-2021-11-26 19:36:48-log: [Scene] require engine end
-2021-11-26 19:36:48-log: [Scene] Serialize end
-2021-11-26 19:36:48-log: [Scene] configureStartup end
-2021-11-26 19:36:48-info: [Scene] WebGL2 device initialized.
-2021-11-26 19:36:48-log: [Scene] Cocos Creator v3.3.2
-2021-11-26 19:36:48-log: [Im-plugin] No online info of im-plugin.
-2021-11-26 19:36:48-info: [Scene] Forward render pipeline initialized.
-2021-11-26 19:36:49-log: [Scene] openEngine end
-2021-11-26 19:36:49-log: [Scene] configureEngine end
-2021-11-26 19:50:48-error: [Scene] A Class already exists with the same __classname__ : "LoginProxy".
-2021-11-26 19:50:53-error: [Scene] A Class already exists with the same __classname__ : "LoginProxy".
-2021-11-26 19:50:53-error: [Scene] A Class already exists with the same __classname__ : "LoginProxy".
-2021-11-26 19:51:00-error: 无法从 cce:/internal/x/prerequisite-imports 解析出模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Login/LoginProxy-001.ts，已将其视为外部模块。
-这是因为：Error: 以 cce:/internal/x/prerequisite-imports 为起点找不到模块 "file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Login/LoginProxy-001.ts"
-2021-11-26 19:51:00-error: 无法从 cce:/internal/x/prerequisite-imports 解析出模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Login/LoginProxy-001.ts，已将其视为外部模块。
-这是因为：Error: 以 cce:/internal/x/prerequisite-imports 为起点找不到模块 "file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Login/LoginProxy-001.ts"
-2021-11-26 20:06:51-error: [preview-error]Uncaught TypeError: Cannot read properties of undefined (reading 'preAssets') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Core/Mgr/AssetsMgr.js
-2021-11-27 04:47:11-error: getImSetting failed
-2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../../core/mvc/IProxy，已将其视为外部模块。
-这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../../core/mvc/IProxy"
-2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
-2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../../core/mgr/AlertManager，已将其视为外部模块。
-这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../../core/mgr/AlertManager"
-2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
-2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../utils/PBBuild，已将其视为外部模块。
-这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../utils/PBBuild"
-2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
-2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../login/data/LoginState，已将其视为外部模块。
-这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../login/data/LoginState"
-2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
-2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../../core/mvc/IProxy，已将其视为外部模块。
-这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../../core/mvc/IProxy"
-2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
-2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../../core/mgr/AlertManager，已将其视为外部模块。
-这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../../core/mgr/AlertManager"
-2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
-2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../utils/PBBuild，已将其视为外部模块。
-这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../utils/PBBuild"
-2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
-2021-11-29 14:35:49-error: 无法从 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 解析出模块 ../login/data/LoginState，已将其视为外部模块。
-这是因为：Error: 以 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/NetworkProxy.ts 为起点找不到模块 "../login/data/LoginState"
-2021-11-29 14:35:49-warn: 你是否遗漏了扩展名？请注意你不能在模块说明符中省略扩展名。
-2021-11-29 14:35:49-error: [Scene] 无法从 pack:///mods/fs/0/assets/Script/Modules/Network/NetworkProxy.js 解析出模块 __unresolved_1。
-2021-11-29 14:37:11-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/Data/NetworkVO.ts ：SyntaxError: unknown: Unexpected token (2:27)
+2021-12-01 18:03:29-log: [Package] menu@1.0.0 enable
+2021-12-01 18:03:29-log: [Package] profile@1.0.0 enable
+2021-12-01 18:03:29-log: [Package] messages@1.0.0 enable
+2021-12-01 18:03:29-log: [Package] program@1.0.0 enable
+2021-12-01 18:03:29-log: [Package] device@1.0.1 enable
+2021-12-01 18:03:29-log: [Package] ui-kit@1.0.1 enable
+2021-12-01 18:03:29-log: [Package] tester@1.0.0 enable
+2021-12-01 18:03:29-log: [Package] preferences@1.0.0 enable
+2021-12-01 18:03:29-log: Setup mods mgr.: 249.792ms
+2021-12-01 18:03:29-log: [Package] engine@1.0.5 enable
+2021-12-01 18:03:32-log: [Package] programming@1.0.0 enable
+2021-12-01 18:03:32-log: [Package] asset-db@1.0.0 enable
+2021-12-01 18:03:32-log: [Package] console@1.0.0 enable
+2021-12-01 18:03:32-log: [Package] scene@1.0.0 enable
+2021-12-01 18:03:32-log: [Package] server@1.0.0 enable
+2021-12-01 18:03:32-log: [Package] utils@1.0.0 enable
+2021-12-01 18:03:32-log: [Package] assets@1.0.0 enable
+2021-12-01 18:03:32-log: [Package] inspector@1.0.0 enable
+2021-12-01 18:03:32-log: [Package] hierarchy@1.0.0 enable
+2021-12-01 18:03:33-log: [Package] preview@1.0.1 enable
+2021-12-01 18:03:33-log: [Package] animator@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] builder@1.2.9 enable
+2021-12-01 18:03:34-log: [Package] node-library@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] shortcuts@1.0.1 enable
+2021-12-01 18:03:34-log: [Package] package-asset@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] reference-image@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] channel-upload-tools@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] runtime-dev-tools@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] alipay-mini-game@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] android@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] baidu-mini-game@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] bytedance-mini-game@1.0.1 enable
+2021-12-01 18:03:34-log: [Package] huawei-agc@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] ios@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] ios-app-clip@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] mac@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] native@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] ohos@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] web-desktop@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] web-mobile@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] wechatgame@1.0.1 enable
+2021-12-01 18:03:34-log: [Package] windows@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] xiaomi-quick-game@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] cocos-play@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] huawei-quick-game@1.0.0 enable
+2021-12-01 18:03:34-log: [Package] link-sure@1.0.0 enable
+2021-12-01 18:03:35-log: [Package] oppo-mini-game@1.0.0 enable
+2021-12-01 18:03:35-log: [Package] qtt@1.0.0 enable
+2021-12-01 18:03:35-log: [Package] vivo-mini-game@1.0.0 enable
+2021-12-01 18:03:35-log: [Package] cocos-service@3.0.1 enable
+2021-12-01 18:03:35-log: [Package] importer@1.0.0 enable
+2021-12-01 18:03:35-log: [Package] extension@3.0.10 enable
+2021-12-01 18:03:35-log: [Im-plugin] Check im-plugin version.
+2021-12-01 18:03:35-log: [Package] im-plugin@3.0.7 enable
+2021-12-01 18:03:35-log: [Package] lightmap@1.0.3 enable
+2021-12-01 18:03:36-log: [Scene] begin init
+2021-12-01 18:03:36-log: [Scene] require engine end
+2021-12-01 18:03:36-log: [Scene] Serialize end
+2021-12-01 18:03:36-log: [Scene] configureStartup end
+2021-12-01 18:03:36-info: [Scene] WebGL2 device initialized.
+2021-12-01 18:03:36-log: [Scene] Cocos Creator v3.3.2
+2021-12-01 18:03:36-log: [Im-plugin] No online info of im-plugin.
+2021-12-01 18:03:36-info: [Scene] Forward render pipeline initialized.
+2021-12-01 18:03:36-log: [Scene] openEngine end
+2021-12-01 18:03:36-log: [Scene] configureEngine end
+2021-12-01 18:04:33-error: [preview-error]Uncaught TypeError: Cannot read properties of undefined (reading 'getComponent') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Modules/Hotupdate/View/HotUpdateViewUI.js
+2021-12-01 18:05:50-error: [preview-error]Uncaught TypeError: Cannot read properties of undefined (reading 'getComponent') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Modules/Hotupdate/View/HotUpdateViewUI.js
+2021-12-01 18:06:45-error: [preview-error]Uncaught TypeError: Cannot read properties of undefined (reading 'getComponent') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Modules/Hotupdate/View/HotUpdateViewUI.js
+2021-12-01 18:07:38-error: [preview-error]Uncaught TypeError: Cannot read properties of undefined (reading 'getComponent') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Modules/Hotupdate/View/HotUpdateViewUI.js
+2021-12-01 18:13:07-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Hotupdate/View/HotUpdateViewUI.ts ：SyntaxError: unknown: Unexpected token ',' (145:17)
 
-  1 |
-> 2 | import { _decorator } from cc;
-    |                            ^
-  3 | const { ccclass, property } = _decorator;
-  4 |
-  5 | @ccclass.
-2021-11-29 14:37:11-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Network/Data/NetworkVO.ts ：SyntaxError: unknown: Unexpected token (2:27)
+  143 |         log(node.getComponent(UITransform).getBoundingBox(), pos)
+  144 |         if (node.getComponent(UITransform).getBoundingBox().contains(pos)) {
+> 145 |             log(, index)
+      |                  ^
+  146 |             let cell: Cell = node.getComponent(Cell);
+  147 |             if (cell.isSelected()) {
+  148 |                 if (this.selectedIndex.length > 1 && index == this.selectedIndex[this.selectedIndex.length - 2]) {.
+2021-12-01 18:13:07-error: 无法加载模块 file:///E:/GitClone/CocosCreator-Scaffold/assets/Script/Modules/Hotupdate/View/HotUpdateViewUI.ts ：SyntaxError: unknown: Unexpected token ',' (145:17)
 
-  1 |
-> 2 | import { _decorator } from cc;
-    |                            ^
-  3 | const { ccclass, property } = _decorator;
-  4 |
-  5 | @ccclass.
-2021-11-29 14:37:11-error: [Scene] 无法从 pack:///mods/fs/0/assets/Script/Modules/Network/NetworkProxy.js 解析出模块 __unresolved_1。
-2021-11-29 14:38:05-error: [Scene] 无法从 pack:///mods/fs/0/assets/Script/Modules/Network/NetworkProxy.js 解析出模块 __unresolved_1。
-2021-11-29 17:42:23-error: [preview-error]Uncaught TypeError: name.endsWith is not a function in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
-2021-11-29 20:15:44-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'name') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Core/MVC/Mediator.js
+  143 |         log(node.getComponent(UITransform).getBoundingBox(), pos)
+  144 |         if (node.getComponent(UITransform).getBoundingBox().contains(pos)) {
+> 145 |             log(, index)
+      |                  ^
+  146 |             let cell: Cell = node.getComponent(Cell);
+  147 |             if (cell.isSelected()) {
+  148 |                 if (this.selectedIndex.length > 1 && index == this.selectedIndex[this.selectedIndex.length - 2]) {.
+2021-12-01 18:13:07-warn: [Scene] Missing class: 87cdd6StTBJe4m256+mnP21
+2021-12-01 18:13:07-error: [Scene] Script "87cdd6StTBJe4m256+mnP21" attached to "HotUpdateViewUI" is missing or invalid. Detailed information:
+Script UUID: "87cdde92-b530-497b-89b6-e7afa69cfdb5"
+Class ID: "87cdd6StTBJe4m256+mnP21"
+
+2021-12-01 18:13:07-error: [Scene] Script "87cdd6StTBJe4m256+mnP21" attached to "HotUpdateViewUI" is missing or invalid. Detailed information:
+Script UUID: "87cdde92-b530-497b-89b6-e7afa69cfdb5"
+Class ID: "87cdd6StTBJe4m256+mnP21"
+
+2021-12-01 18:13:07-warn: [Scene] Missing class: 87cdd6StTBJe4m256+mnP21
+2021-12-01 18:13:07-error: [Scene] Script "87cdd6StTBJe4m256+mnP21" attached to "HotUpdateViewUI" in prefab "HotUpdateViewUI" is missing or invalid. Detailed information:
+Asset url: "db://assets/resources/Prefabs/HotUpdateViewUI"
+Script UUID: "87cdde92-b530-497b-89b6-e7afa69cfdb5"
+Class ID: "87cdd6StTBJe4m256+mnP21"
+
+2021-12-01 18:13:07-error: [Scene] Script "87cdd6StTBJe4m256+mnP21" attached to "HotUpdateViewUI" in prefab "HotUpdateViewUI" is missing or invalid. Detailed information:
+Asset url: "db://assets/resources/Prefabs/HotUpdateViewUI"
+Script UUID: "87cdde92-b530-497b-89b6-e7afa69cfdb5"
+Class ID: "87cdd6StTBJe4m256+mnP21"
+
+2021-12-01 18:59:10-error: getImSetting failed

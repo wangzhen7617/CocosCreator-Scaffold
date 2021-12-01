@@ -25,12 +25,14 @@ export class LoginMediator extends Mediator {
 
     protected addEvent(): void {
         this.addSendToUIEvent(NotifyEventType.TEST_ON_POST)
+        this.addSendToUIEvent(NotifyEventType.TEST_CREATE_WEBSOCKET_SUCCESS)
     }
 
     protected addModuleEvent(): void {
         super.addModuleEvent();
         this.addUISendOutEvent(NotifyEventType.NETWORK_REQUEST_HTTP);
         this.addUISendOutEvent(NotifyEventType.TEST_TO_POST);
+        this.addUISendOutEvent(NotifyEventType.TEST_CREATE_WEBSOCKET)
     }
 
     protected removeModuleEvent(): void {

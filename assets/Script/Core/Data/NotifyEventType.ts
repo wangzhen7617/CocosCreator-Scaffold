@@ -51,6 +51,8 @@ export class NotifyEventType extends Component {
 
     public static TEST_TO_POST: string = 'TEST_TO_POST'
     public static TEST_ON_POST: string = 'TEST_ON_POST'
+    public static TEST_CREATE_WEBSOCKET: string = 'TEST_CREATE_WEBSOCKET'
+    public static TEST_CREATE_WEBSOCKET_SUCCESS: string = 'TEST_CREATE_WEBSOCKET_SUCCESS'
 
 }
 

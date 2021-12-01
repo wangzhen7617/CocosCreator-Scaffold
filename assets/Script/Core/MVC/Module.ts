@@ -32,7 +32,7 @@ export class Module extends Node {
     private savedUIList: Array<any> = [];
     private lastPopUIName: string = '';
 
-    constructor(name: string) {
+    constructor() {
         super();
         this.dispatcher = new Dispatcher();
         this.uiStack = new Stack();
@@ -43,13 +43,13 @@ export class Module extends Node {
         let widget = this.addComponent(Widget);
         widget.isAlignLeft = true;
         widget.isAlignRight = true;
-
+        widget.isAlignTop = true;
+        widget.isAlignBottom = true;
         widget.left = 0;
         widget.right = 0;
         widget.top = 0;
         widget.bottom = 0;
-        widget.isAlignTop = true;
-        widget.isAlignBottom = true;
+
 
         this.addEvent();
     }
@@ -147,7 +147,6 @@ export class Module extends Node {
         // }
         this.lastPopUIName = '';
         this.addChild(newUI);
-        this.dispatcher.emit(ModuleEventType.MODULE_TOP_UI_CHANGE, uiName);
         if (showAnimation && !GlobalParams.isAppBackGround) {
             this.uiChanging = true;
             if (!isValid(this.mask)) {
@@ -214,7 +213,6 @@ export class Module extends Node {
         if (topUI != null) {
             topUI.active = true;
         }
-        this.dispatcher.emit(ModuleEventType.MODULE_TOP_UI_CHANGE, topUI.name);
         if (isValid(oldUI)) {
             if (this.lastPopUIName == oldUI.name) {
                 warn(this.getModuleName() + ' uiName相同');

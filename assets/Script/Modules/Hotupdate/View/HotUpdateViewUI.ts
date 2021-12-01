@@ -1,6 +1,7 @@
 
-import { _decorator, Component, Node, sys, JsonAsset, AssetManager, Label, Game } from 'cc';
+import { _decorator, Component, Node, sys, JsonAsset, AssetManager, Label, Game, Prefab, instantiate, EventTouch, Vec3, UITransform, Vec2, warn, loader, log, Graphics, view } from 'cc';
 import { BUILD, JSB } from 'cc/env';
+import { Cell } from '../../../../resources/Prefabs/Cell';
 import { BaseModule } from '../../../Core/Base/BaseModule';
 import { BaseView } from '../../../Core/Base/BaseView';
 import { GameType } from '../../../Core/Data/GameType';
@@ -32,6 +33,21 @@ export class HotUpdateView extends BaseModule {
     @property(Label)
     tip: Label = null;
 
+    @property(Prefab)
+    cell: Prefab = null;
+
+    @property(Prefab)
+    Line: Prefab = null;
+
+    @property(Node)
+    contain: Node = null;
+
+    cells = [];
+    selectedIndex = [];
+    selectedCells = [];
+    nodeLines = []
+    curIndex = -1;
+
     start() {
         super.start();
     }
@@ -55,30 +71,117 @@ export class HotUpdateView extends BaseModule {
 
     private runGame() {
 
-        let json: any = this.cfgJson.json;
-        // let localGameInfo: any =  json.Game;
-        // for (const key in json.Game) {
-        //     let gameInfo: any = json.Game[key];
-        //     let pkgName: string = gameInfo.packageName;
-        //     localGameInfo[pkgName].isLoaded = false;
-        // }
-        GlobalParams.localGameInfo = json.Game;;
+        //     let json: any = this.cfgJson.json;
+        //     GlobalParams.localGameInfo = json.Game;;
+        //     this.sendEvent(NotifyEventType.HOT_UPDATE_SWITCH_NEXT, "test")
 
-        // let _t = 3;
-        // this.schedule(() => {
-        //     this.tip.string = `${_t}秒后跳转`
-        //     _t--
-        //     if (_t <= 0) {
-        //         //todo
-        //         // AssetsMgr.loadGame(GameType.Start, false, this.onLoadCallback, false);
+        for (let i = 0; i < 5 * 5; i++) {
+            let cell = instantiate(this.cell);
+            cell.parent = this.contain;
+            cell.name = i + ""
+            this.cells[i] = cell;
+            // cell.children[0].getComponent(Label).string = "" + (Math.floor(Math.random() * 2) + 1)
+            cell.children[0].getComponent(Label).string = cell.name
+            cell.on(Node.EventType.TOUCH_START, this.clickCellStart, this)
+            cell.on(Node.EventType.TOUCH_END, this.clickCellEnd, this)
+            cell.on(Node.EventType.TOUCH_MOVE, this.clickCellMove, this)
+        }
 
-        //     }
-        // }, 1, 2)
-        this.sendEvent(NotifyEventType.HOT_UPDATE_SWITCH_NEXT, "test")
+
+
+
+
     }
 
     onLoadCallback() {
         UIMgr.showModule(GameType.Start);
+    }
+
+    clickCellStart(event: EventTouch) {
+        let node = event.target as Node
+        this.selectedIndex.push(Number(node.name))
+        this.selectedCells.push(node)
+        this.curIndex = Number(node.name);
+        log(event.getLocation())
+    }
+    clickCellEnd(event: EventTouch) {
+        log(event)
+    }
+
+    clickCellMove(event: EventTouch) {
+        log(event.getUILocation())
+        // return
+
+        let left = this.curIndex - 1;
+        if ((left + 5) % 5 < this.curIndex % 5) {
+            if (this.isTarget(event.getUILocation(), left)) {
+                return
+            }
+        }
+
+        let right = this.curIndex + 1;
+        if (right % 5 > this.curIndex % 5) {
+            if (this.isTarget(event.getUILocation(), right)) {
+                return
+            }
+        }
+
+        let top = this.curIndex + 5;
+        if (top / 5 < 5) {
+            if (this.isTarget(event.getUILocation(), top)) {
+                return
+            }
+        }
+
+        let bottom = this.curIndex - 5;
+        if (bottom >= 0) {
+            if (this.isTarget(event.getUILocation(), bottom)) {
+                return
+            }
+        }
+    }
+
+    isTarget(pos: Vec2, index: number) {
+        let node = this.cells[index] as Node
+        let x = pos.x - view.getCanvasSize().x / 2
+        let y = pos.y - view.getCanvasSize().y / 2
+
+        log(node.getComponent(UITransform).getBoundingBox(), new Vec2(x, y), index)
+        if (node.getComponent(UITransform).getBoundingBox().contains(new Vec2(x, y))) {
+            let cell: Cell = node.getComponent(Cell);
+            if (cell.isSelected()) {
+                if (this.selectedIndex.length > 1 && index == this.selectedIndex[this.selectedIndex.length - 2]) {
+                    let last = this.selectedCells.pop() as Node;
+                    last.getComponent(Cell).select(false)
+                    let line = this.nodeLines.pop() as Node
+                    line.destroy()
+                    this.selectedIndex.pop()
+                } else {
+                    warn('warn')
+                }
+            } else {
+                cell.select(true)
+                this.addLine(this.selectedCells[this.selectedCells.length - 1], node)
+                this.selectedCells.push(node)
+                this.selectedIndex.push(index)
+                //add line
+
+            }
+            return true
+        } else {
+            return false
+        }
+    }
+
+    addLine(startNode: Node, endNode: Node) {
+
+        let line = instantiate(this.Line)
+        line.parent = this.node
+        line.getComponent(Graphics).moveTo(startNode.position.x, startNode.position.y)
+        line.getComponent(Graphics).lineTo(endNode.position.x, endNode.position.y);
+        line.getComponent(Graphics).stroke()
+        this.nodeLines.push(line);
+
     }
 
 }

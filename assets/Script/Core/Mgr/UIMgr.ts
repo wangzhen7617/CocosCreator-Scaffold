@@ -232,7 +232,7 @@ export class UIMgr extends Component {
     }
 
     public static destroyModuleUI(moduleUI: any): void {
-        let mediator: any = AppFacade.getInstance().getMediator(moduleUI.getModuleName());
+        let mediator = AppFacade.getInstance().getMediator(moduleUI.getModuleName());
         mediator.removeModule();
     }
 
@@ -264,11 +264,7 @@ export class UIMgr extends Component {
         }
     }
 
-    public static topUIChange(uiName: string): void {
-        for (let i: number = 0; i < UIMgr.uiMap.length; i++) {
-            UIMgr.uiMap[i].ui.dispatcher.emit(ModuleEventType.MODULE_TOP_UI_CHANGE, uiName);
-        }
-    }
+
 }
 
 /**

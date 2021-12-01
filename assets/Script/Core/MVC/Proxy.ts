@@ -1,5 +1,8 @@
 
 import { _decorator, Component, Node, log } from 'cc';
+import { HotUpdateVO } from '../../Modules/Hotupdate/Data/HotUpdateVO';
+import { LoginVO } from '../../Modules/Login/Data/LoginVO';
+import { NetworkVO } from '../../Modules/Network/Data/NetworkVO';
 import { AppFacade } from './AppFacade';
 import { Dispatcher } from './Dispatcher';
 import { DispatcherEvent } from './DispatcherEvent';
@@ -23,7 +26,7 @@ const { ccclass, property } = _decorator;
 export class Proxy extends Component {
 
     private _dispatcher: Dispatcher;
-    public vo: any;
+    public vo:any
     private eventList: { [index: string]: any } = {};
 
     public setDispatcher = (dispatcher: Dispatcher): void => {

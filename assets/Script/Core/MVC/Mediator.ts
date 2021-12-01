@@ -76,7 +76,7 @@ export class Mediator extends Component {
         view.dispatcher.vo = this.proxy.vo;
         this.onModulePreAddToScene();
         parent.addChild(view);
-        setTimeout(this.checkSaveEvent, 50);  //TODO 后续
+        setTimeout(this.checkSaveEvent, 50);  //TODO 
         return view;
     }
 
@@ -117,14 +117,14 @@ export class Mediator extends Component {
         this._dispatcher.emit(eventName, data);
     }
 
-  
+
     protected addModuleEvent(): void {
-        this.getModuleDispatcher().on(ModuleEventType.MODULE_UI_EMPTY,this.onModuleUIEmpty,this);
+        this.getModuleDispatcher().on(ModuleEventType.MODULE_UI_EMPTY, this.onModuleUIEmpty, this);
         this.addUISendOutEvent(NotifyEventType.SCENE_SWITCH_SCENE);
     }
 
     protected removeModuleEvent(): void {
-        this.getModuleDispatcher().off(ModuleEventType.MODULE_UI_EMPTY,this.onModuleUIEmpty,this);
+        this.getModuleDispatcher().off(ModuleEventType.MODULE_UI_EMPTY, this.onModuleUIEmpty, this);
         let d = this.getModuleDispatcher();
         while (this.moduleEventList.length > 0) {
             let eventName: string = this.moduleEventList.pop();
@@ -156,7 +156,7 @@ export class Mediator extends Component {
             this.getModuleDispatcher().emit(event.type, event.detail);
         }
     }
-  //===================addUISendOutEvent======================*/
+    //===================addUISendOutEvent======================*/
     protected addUISendOutEvent(eventName: string): void {
         this.getModuleDispatcher().on(eventName, this.onSendUINotification, this);
         this.moduleEventList.push(eventName);

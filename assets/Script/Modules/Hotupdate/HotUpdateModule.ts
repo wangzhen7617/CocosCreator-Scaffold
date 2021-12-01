@@ -21,8 +21,8 @@ const { ccclass, property } = _decorator;
 @ccclass('HotUpdateModule')
 export class HotUpdateModule extends Module {
 
-    constructor(name: string) {
-        super(name);
+    constructor() {
+        super();
         this.pushView('HotUpdateViewUI', false);
     }
 

@@ -1,8 +1,10 @@
 
-import { _decorator, Component, Node, warn } from 'cc';
+import { _decorator, Component, Node, warn, log } from 'cc';
 import { NotifyEventType } from '../../Core/Data/NotifyEventType';
 import { DispatcherEvent } from '../../Core/MVC/DispatcherEvent';
 import { Proxy } from '../../Core/MVC/Proxy';
+import { s2c } from '../Network/Data/s2c';
+import { LoginState } from './Data/LoginState';
 import { LoginVO } from './Data/LoginVO';
 const { ccclass, property } = _decorator;
 
@@ -30,6 +32,9 @@ export class LoginProxy extends Proxy {
 
     protected addEvent(): void {
         this.addNotification(NotifyEventType.TEST_TO_POST, this.testToPost)
+        this.addNotification(NotifyEventType.TEST_CREATE_WEBSOCKET, this.testCreateWS)
+
+
     }
 
 
@@ -46,8 +51,12 @@ export class LoginProxy extends Proxy {
             },
         });
     }
-}
 
+    private testCreateWS(event: DispatcherEvent) {
+        this.vo.loginState = LoginState.LOGINED; // 测试 
+        this.sendNotification(NotifyEventType.SOCKET_CREATE_GAME_SOCKET, event.detail)
+    }
+}
 /**
  * [1] Class member could be defined like this.
  * [2] Use `property` decorator if your want the member to be serializable.
