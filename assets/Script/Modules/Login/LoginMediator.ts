@@ -33,6 +33,7 @@ export class LoginMediator extends Mediator {
         this.addUISendOutEvent(NotifyEventType.NETWORK_REQUEST_HTTP);
         this.addUISendOutEvent(NotifyEventType.TEST_TO_POST);
         this.addUISendOutEvent(NotifyEventType.TEST_CREATE_WEBSOCKET)
+        this.addUISendOutEvent(NotifyEventType.SWITCH_SCENE_TO_BATTLE)
     }
 
     protected removeModuleEvent(): void {

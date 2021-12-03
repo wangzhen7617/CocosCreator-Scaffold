@@ -1,5 +1,7 @@
 
 import { _decorator, Component, Node } from 'cc';
+import { Proxy } from '../../Core/MVC/Proxy';
+import { BattleVO } from './Data/BattleVO';
 const { ccclass, property } = _decorator;
 
 /**
@@ -7,32 +9,27 @@ const { ccclass, property } = _decorator;
  * github = https://github.com/wangzhen7617/CocosCreator-Scaffold
  * 
  * Predefined variables
- * DateTime = Wed Dec 01 2021 17:08:01 GMT+0800 (中国标准时间)
+ * DateTime = Fri Dec 03 2021 14:38:46 GMT+0800 (中国标准时间)
  * Author = <wangzhen7617>
- * FileBasename = CustomComponent.ts
- * FileBasenameNoExtension = CustomComponent
- * URL = db://assets/resources/Prefabs/CustomComponent.ts
+ * FileBasename = BattleProxy.ts
+ * FileBasenameNoExtension = BattleProxy
+ * URL = db://assets/Script/Modules/Battle/BattleProxy.ts
  * ManualUrl = https://docs.cocos.com/creator/3.3/manual/zh/
  *
  */
 
-@ccclass('Cell')
-export class Cell extends Component {
+@ccclass('BattleProxy')
+export class BattleProxy extends Proxy {
 
-    private selected = false
 
-    start() {
+    constructor() {
+        super();
+        this.vo = new BattleVO();
     }
 
+    protected addEvent(): void {
 
-    isSelected() {
-        return this.selected
     }
-
-    select(sel: boolean) {
-        this.selected = sel
-    }
-
 }
 
 /**

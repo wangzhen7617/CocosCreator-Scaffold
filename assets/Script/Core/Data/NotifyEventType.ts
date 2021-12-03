@@ -22,6 +22,7 @@ export class NotifyEventType extends Component {
     //hotupdate
     public static HOT_UPDATE_SWITCH_NEXT: string = 'HOT_UPDATE_SWITCH_NEXT';
     //login
+    public static SWITCH_SCENE_TO_BATTLE: string = 'SWITCH_SCENE_TO_BATTLE'
 
     //network
     public static NETWORK_REQUEST_HTTP: string = 'NETWORK_REQUEST_HTTP';
@@ -49,10 +50,12 @@ export class NotifyEventType extends Component {
     public static ROOM_SEND_LEAVE_SCENE: string = 'ROOM_SEND_LEAVE_SCENE';
 
 
+    //test
     public static TEST_TO_POST: string = 'TEST_TO_POST'
     public static TEST_ON_POST: string = 'TEST_ON_POST'
     public static TEST_CREATE_WEBSOCKET: string = 'TEST_CREATE_WEBSOCKET'
     public static TEST_CREATE_WEBSOCKET_SUCCESS: string = 'TEST_CREATE_WEBSOCKET_SUCCESS'
+
 
 }
 

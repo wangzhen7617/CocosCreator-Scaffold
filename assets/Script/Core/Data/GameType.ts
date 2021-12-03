@@ -20,6 +20,8 @@ const { ccclass, property } = _decorator;
 export class GameType extends Component {
     static Start: string = 'Start';
     static Login: string = 'Login';
+    static Battle: string = 'Battle';
+
 }
 
 /**

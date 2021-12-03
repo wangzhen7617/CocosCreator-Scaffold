@@ -1,26 +1,26 @@
 {
     "Game": {
-        "Start":      {
+        "Start": {
             "packageNick": "公共",
             "preAssets": [],
             "preAtalas": [],
             "isLoaded": false
         },
-        "Login":      {
+        "Login": {
             "packageNick": "登录",
             "preAssets": ["LoginViewUI"],
             "preAtalas": [],
             "isLoaded": false
         },
-        "Main":   {
+        "Main": {
             "packageNick": "主场景",
             "preAssets": [],
             "preAtalas": [],
             "isLoaded": false
         },
-        "Battle":{
+        "Battle": {
             "packageNick": "游戏",
-            "preAssets": [],
+            "preAssets": ["BattleViewUI"],
             "preAtalas": [],
             "isLoaded": false
         }

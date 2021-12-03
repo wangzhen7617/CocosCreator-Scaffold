@@ -19,7 +19,8 @@ const { ccclass, property } = _decorator;
 @ccclass('SceneType')
 export class SceneType extends Component {
     public static Start: string = "Start";
-    public static Login: string = "Login"
+    public static Login: string = "Login";
+    public static Battle: string = 'Battle'
 }
 
 /**

@@ -7,6 +7,9 @@ import { ModuleType } from '../../../Core/Data/ModuleType';
 import { AssetsMgr } from '../../../Core/Mgr/AssetsMgr';
 import { UIMgr } from '../../../Core/Mgr/UIMgr';
 import { AppFacade } from '../../../Core/MVC/AppFacade';
+import { BattleMediator } from '../../Battle/BattleMediator';
+import { BattleProxy } from '../../Battle/BattleProxy';
+import { BattleVO } from '../../Battle/Data/BattleVO';
 import { HotUpdateMediator } from '../../Hotupdate/HotUpdateMediator';
 import { HotUpdateProxy } from '../../Hotupdate/HotUpdateProxy';
 import { LoginMediator } from '../../Login/LoginMediator';
@@ -49,6 +52,9 @@ export class StartScene extends BaseScene {
         AppFacade.getInstance().registerMediator(ModuleType.HOT_UPDATE, new HotUpdateMediator());
         AppFacade.getInstance().registerProxy(ModuleType.LOGIN, new LoginProxy())
         AppFacade.getInstance().registerMediator(ModuleType.LOGIN, new LoginMediator())
+
+        AppFacade.getInstance().registerProxy(ModuleType.Battle, new BattleProxy())
+        AppFacade.getInstance().registerMediator(ModuleType.Battle, new BattleMediator())
 
 
         // AppFacade.getInstance().registerProxy(ModuleType.SOCKET, new SocketProxy());

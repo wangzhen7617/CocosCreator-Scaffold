@@ -1,9 +1,12 @@
 
 import { _decorator, Component, Node, warn, log } from 'cc';
+import { GameType } from '../../Core/Data/GameType';
 import { NotifyEventType } from '../../Core/Data/NotifyEventType';
+import { AssetsMgr } from '../../Core/Mgr/AssetsMgr';
 import { DispatcherEvent } from '../../Core/MVC/DispatcherEvent';
 import { Proxy } from '../../Core/MVC/Proxy';
 import { s2c } from '../Network/Data/s2c';
+import { SceneType } from '../Scene/Data/SceneType';
 import { LoginState } from './Data/LoginState';
 import { LoginVO } from './Data/LoginVO';
 const { ccclass, property } = _decorator;
@@ -33,7 +36,7 @@ export class LoginProxy extends Proxy {
     protected addEvent(): void {
         this.addNotification(NotifyEventType.TEST_TO_POST, this.testToPost)
         this.addNotification(NotifyEventType.TEST_CREATE_WEBSOCKET, this.testCreateWS)
-
+        this.addNotification(NotifyEventType.SWITCH_SCENE_TO_BATTLE, this.switchSceneToBattle)
 
     }
 
@@ -56,6 +59,18 @@ export class LoginProxy extends Proxy {
         this.vo.loginState = LoginState.LOGINED; // 测试 
         this.sendNotification(NotifyEventType.SOCKET_CREATE_GAME_SOCKET, event.detail)
     }
+
+    private switchSceneToBattle(event: DispatcherEvent) {
+        AssetsMgr.loadGame(
+            GameType.Battle,
+            false,
+            () => {
+                this.sendNotification(NotifyEventType.SCENE_SWITCH_SCENE, SceneType.Battle);
+            },
+            false
+        );
+    }
+
 }
 /**
  * [1] Class member could be defined like this.

@@ -37,6 +37,8 @@ export class LoginViewUI extends BaseModule {
 
     start() {
         super.start()
+        this.sendEvent(NotifyEventType.SWITCH_SCENE_TO_BATTLE)
+
     }
 
     protected initView() {
@@ -52,10 +54,6 @@ export class LoginViewUI extends BaseModule {
     }
 
     protected removeEvent() {
-        this.btnPostUrl.off(SysEventType.CLICK, this.clickPostUrl, this)
-        this.btnCreateWS.off(SysEventType.CLICK, this.clickCreateWs, this)
-        this.btnSendPackage.off(SysEventType.CLICK, this.clickSendPACKAGE, this)
-
         this.detachEvent(NotifyEventType.TEST_ON_POST, this.onPostRes, this)
 
     }
