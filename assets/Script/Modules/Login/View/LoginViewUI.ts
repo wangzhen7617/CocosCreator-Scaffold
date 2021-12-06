@@ -34,10 +34,11 @@ export class LoginViewUI extends BaseModule {
 
     @property(Label)
     InfoLab: Label = null;
+    @property(Node)
+    btnStart: Node = null;
 
     start() {
         super.start()
-        this.sendEvent(NotifyEventType.SWITCH_SCENE_TO_BATTLE)
 
     }
 
@@ -49,8 +50,10 @@ export class LoginViewUI extends BaseModule {
         this.btnPostUrl.on(SysEventType.CLICK, this.clickPostUrl, this)
         this.btnCreateWS.on(SysEventType.CLICK, this.clickCreateWs, this)
         this.btnSendPackage.on(SysEventType.CLICK, this.clickSendPACKAGE, this)
-
+        this.btnStart.on(SysEventType.CLICK, this.clickStart, this);
         this.attachEvent(NotifyEventType.TEST_ON_POST, this.onPostRes, this)
+
+
     }
 
     protected removeEvent() {
@@ -72,6 +75,10 @@ export class LoginViewUI extends BaseModule {
 
     private clickSendPACKAGE() {
 
+    }
+
+    clickStart() {
+        this.sendEvent(NotifyEventType.SWITCH_SCENE_TO_BATTLE)
     }
 
 }

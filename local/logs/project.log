@@ -84,3 +84,31 @@
 2021-12-03 16:32:16-log: [Scene] don't support this function in current mode prefab queryAnimationPropValueAtFrame
 2021-12-03 16:32:23-log: [Scene] don't support this function in current mode prefab queryAnimationPropValueAtFrame
 2021-12-03 16:32:28-log: [Scene] don't support this function in current mode prefab queryAnimationPropValueAtFrame
+2021-12-04 22:08:51-error: getImSetting failed
+2021-12-06 12:00:47-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'children') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Modules/Battle/View/BattleViewUI.js
+2021-12-06 12:01:32-error: [preview-error]Uncaught TypeError: Cannot read properties of undefined (reading 'position') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Modules/Battle/View/BattleViewUI.js
+2021-12-06 12:01:53-error: [preview-error]Uncaught TypeError: Cannot read properties of undefined (reading 'position') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Modules/Battle/View/BattleViewUI.js
+2021-12-06 12:02:17-error: [preview-error]Uncaught TypeError: Cannot read properties of undefined (reading 'position') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Modules/Battle/View/BattleViewUI.js
+2021-12-06 12:06:51-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'push') in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-12-06 12:10:25-log: [Scene] Animation node(7fjgvQO0VElbhGLPOFXt03)doesn't exist
+2021-12-06 13:57:54-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'name') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Core/MVC/Mediator.js
+2021-12-06 14:07:13-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'name') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Core/MVC/Mediator.js
+2021-12-06 14:19:38-log: [Scene] Animation node(44SxwwBIxGbbgrgA2QXJag)doesn't exist
+2021-12-06 14:29:04-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'length') in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-12-06 14:29:18-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'length') in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-12-06 14:44:33-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'length') in http://localhost:7456/scripting/engine/bin/.cache/dev/preview/bundled/index.js
+2021-12-06 15:34:33-error: [preview-error]Uncaught TypeError: Cannot read properties of null (reading 'string') in http://localhost:7456/scripting/x/mods/fs/0/assets/Script/Modules/Battle/View/BattleViewUI.js
+2021-12-06 15:50:56-log: [Scene] Animation node(aaM0Ja9jNCqYJmCbpZ1Fg2)doesn't exist
+2021-12-06 16:08:35-log: [Scene] Animation node(bfm8oPrlBE1ZP2t8PD57qH)doesn't exist
+2021-12-06 16:09:31-log: [Scene] Animation node(02elhNeBhAxoDFipOTcqpy)doesn't exist
+2021-12-06 16:09:51-log: [Scene] Animation node(a5qfYhgv5BMYNN8UYqsAlj)doesn't exist
+2021-12-06 16:10:43-log: [Scene] Animation node(b22drZB5pO+6mOBzX634Y3)doesn't exist
+2021-12-06 16:12:06-log: [Scene] Animation node(fcFTHBAoROaJmws8i8E9lb)doesn't exist
+2021-12-06 16:12:13-log: [Scene] Animation node(78kk49IGRB6q1l5uaxeLlT)doesn't exist
+2021-12-06 16:14:59-log: [Scene] Animation node(036RYxTilJhKlqUJekWKJn)doesn't exist
+2021-12-06 16:15:06-log: [Scene] Animation node(48mpz1KaVPt6yLA9fhgpPM)doesn't exist
+2021-12-06 16:15:07-log: [Scene] Animation node(30G+DtWBdA6ZJBT72+7lPo)doesn't exist
+2021-12-06 16:15:55-log: [Scene] Animation node(29X1nez19PlK4+EtmA+3n/)doesn't exist
+2021-12-06 16:16:23-log: [Scene] Animation node(f3ctMoH51GvZdaCnBNYqJe)doesn't exist
+2021-12-06 16:16:30-log: [Scene] Animation node(0c9bl0nVJC5Y5VYxii1doO)doesn't exist
+2021-12-06 16:17:32-log: [Scene] Animation node(7c59jfvFZHS5nDxV0nLP23)doesn't exist

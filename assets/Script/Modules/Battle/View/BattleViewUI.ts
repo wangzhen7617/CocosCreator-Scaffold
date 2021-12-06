@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, log, Prefab, instantiate, Vec3, EventTouch, Tween, tween, easing, warn, Animation, UITransform, Vec2 } from 'cc';
+import { _decorator, Component, Node, log, Prefab, instantiate, Vec3, EventTouch, Tween, tween, easing, warn, Animation, UITransform, Vec2, Label } from 'cc';
 import { Hexagon } from '../../../../resources/Prefabs/Hexagon';
 import { BaseModule } from '../../../Core/Base/BaseModule';
 import { SysEventType } from '../../../Core/Data/SysEventType';
@@ -26,10 +26,10 @@ interface HexPosition {
 
 @ccclass('BattleViewUI')
 export class BattleViewUI extends BaseModule {
-    totalArray: any[] = []//方块总数
+    totalArray: Node[] = []//方块总数
     totalPosition: any[] = []//存放每个方块的位置
-    selectArray: Hexagon[] = []//选中方块数组
-    deleteArray: any[] = []//删除的方块数组
+    selectArray: Node[] = []//选中方块数组
+    deleteArray: Node[] = []//删除的方块数组
 
     colNum: any = {};//删除元素的每列个数
     isHold: boolean = false;//是否按下
@@ -40,7 +40,12 @@ export class BattleViewUI extends BaseModule {
     bombNumber: number = 0;//炸弹数量
     gameEnded: boolean = false
 
-    colorArray: string[] = new Array('5', '1', '2', '3', '4'); //颜色数组
+    currentLevel = 1;//当前等级
+    currentLevelScore = 0;//当前等级分数
+    targetScore = 8;//当前等级目标分数
+    remainSteps = 2; // 剩余的步数
+
+    colorArray: string[] = new Array('1', '2', '3', '4'); //颜色数组
 
     selectHasBomb: Node[] = [];
 
@@ -63,6 +68,10 @@ export class BattleViewUI extends BaseModule {
     explosionGroup: Node = null;
     @property(Node)
     boomgroup: Node = null;
+    @property(Node)
+    newStarGroup: Node = null;
+    @property(Label)
+    score: Label = null;
 
 
 
@@ -73,6 +82,11 @@ export class BattleViewUI extends BaseModule {
     }
 
     protected initView() {
+        this.currentLevel = 1;//当前等级
+        this.currentLevelScore = 0;//当前等级分数
+        this.targetScore = 8;//当前等级目标分数
+        this.remainSteps = 2; // 剩余的步数
+
         this.loadHexagon()
 
     }
@@ -95,11 +109,11 @@ export class BattleViewUI extends BaseModule {
                 log(i, j)
 
 
-                let index = parseInt((Math.random() * this.colorArray.length - 1).toString());
+                let index = parseInt((Math.random() * this.colorArray.length).toString());
 
                 let node = instantiate(this.hexagon)
                 node.parent = this.hexgroup;
-                if (Math.random() > 0.9) {
+                if (Math.random() > 1.9) {
                     node.getComponent(Hexagon).setBomb(index)
                     node.name = 'bomb'
                 } else {
@@ -117,12 +131,10 @@ export class BattleViewUI extends BaseModule {
                 this.totalPosition.push(HexPos);
                 this.totalArray.push(node);
                 node['test'] = i + "-" + j
-                // node.on(Node.EventType.MOUSE_DOWN, this.onMouseDown, this);
-                // node.on(Node.EventType.MOUSE_ENTER, this.onMouseEnter, this);
-                // node.on(Node.EventType.MOUSE_LEAVE, this.onMouseLeave, this);
 
                 node.on(Node.EventType.TOUCH_START, this.onTouchStart, this)
                 node.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this)
+
 
             }
         }
@@ -142,7 +154,7 @@ export class BattleViewUI extends BaseModule {
         }
         tween(node).to(0.1, { scale: new Vec3(1.1, 1.1) }, { easing: "bounceOut" }).start()
         this.isHold = true;
-        this.selectArray.push(node.getComponent(Hexagon));//消灭方块数组
+        this.selectArray.push(node);//消灭方块数组
         node.getComponent(Hexagon).select = true;
         node.getComponent(Hexagon).eventSelect = true;
 
@@ -176,7 +188,7 @@ export class BattleViewUI extends BaseModule {
             // 检测周围
             for (let j = 0; j < this.totalArray.length; j++) {
                 if (this.totalArray[j].getComponent(UITransform).getBoundingBox().contains(new Vec2(convertPosition.x, convertPosition.y))) {
-                    this.onMouseEnter({ currentTarget: this.totalArray[j] })
+                    this.onMouseEnter(this.totalArray[j])
                     break
                 }
             }
@@ -188,27 +200,28 @@ export class BattleViewUI extends BaseModule {
 
     }
 
-    private onMouseEnter(event) {
-        log('onMouseEnter', event.currentTarget['test'])
+    private onMouseEnter(node: Node) {
         if (!this.isHold) {
             return
         }
         if (this.gameEnded) {
             return;
         }
-        let node = event.currentTarget as unknown as Node;
         let _hexagon = node.getComponent(Hexagon)
 
-        if (this.selectArray[this.selectArray.length - 1].indexColor == _hexagon.indexColor) {
-            if ((Math.abs(this.selectArray[this.selectArray.length - 1].row - _hexagon.row) == 1 && this.selectArray[this.selectArray.length - 1].col == _hexagon.col)
-                || (this.selectArray[this.selectArray.length - 1].col - _hexagon.col == 1 && (this.selectArray[this.selectArray.length - 1].row - _hexagon.row == 0 || this.selectArray[this.selectArray.length - 1].row - _hexagon.row == -1))
-                || (this.selectArray[this.selectArray.length - 1].col - _hexagon.col == -1 && (this.selectArray[this.selectArray.length - 1].row - _hexagon.row == 0 || this.selectArray[this.selectArray.length - 1].row - _hexagon.row == 1))) {
+
+
+
+        if (this.selectArray[this.selectArray.length - 1].getComponent(Hexagon).indexColor == _hexagon.indexColor) {
+            if ((Math.abs(this.selectArray[this.selectArray.length - 1].getComponent(Hexagon).row - _hexagon.row) == 1 && this.selectArray[this.selectArray.length - 1].getComponent(Hexagon).col == _hexagon.col)
+                || (this.selectArray[this.selectArray.length - 1].getComponent(Hexagon).col - _hexagon.col == 1 && (this.selectArray[this.selectArray.length - 1].getComponent(Hexagon).row - _hexagon.row == 0 || this.selectArray[this.selectArray.length - 1].getComponent(Hexagon).row - _hexagon.row == -1))
+                || (this.selectArray[this.selectArray.length - 1].getComponent(Hexagon).col - _hexagon.col == -1 && (this.selectArray[this.selectArray.length - 1].getComponent(Hexagon).row - _hexagon.row == 0 || this.selectArray[this.selectArray.length - 1].getComponent(Hexagon).row - _hexagon.row == 1))) {
 
                 tween(node).to(0.1, { scale: new Vec3(1.1, 1.1) }, { easing: "bounceOut" }).start()
                 // Laya.SoundManager.playSound("sound/select.mp3", 1, new Laya.Handler(this, null));
                 if (!_hexagon.select) {
-                    this.drawLine(this.selectArray[this.selectArray.length - 1], _hexagon);
-                    this.selectArray.push(_hexagon);//消灭方块数组
+                    this.drawLine(this.selectArray[this.selectArray.length - 1].getComponent(Hexagon), _hexagon);
+                    this.selectArray.push(node);//消灭方块数组
                     _hexagon.select = true;
                     _hexagon.eventSelect = true;
                     if (node.name != 'lbx') {
@@ -218,9 +231,9 @@ export class BattleViewUI extends BaseModule {
             }
         }
 
-        if (this.selectArray.length > 2 && node == this.selectArray[this.selectArray.length - 2].node) {
+        if (this.selectArray.length > 2 && node == this.selectArray[this.selectArray.length - 2]) {
             this.linegroup.children[this.linegroup.children.length - 1].destroy();
-            this.selectArray[this.selectArray.length - 1].select = false;
+            this.selectArray[this.selectArray.length - 1].getComponent(Hexagon).select = false;
             this.selectArray.pop();
             if (node.name != 'lbx') {
                 this.selectHasBomb.pop()
@@ -241,7 +254,8 @@ export class BattleViewUI extends BaseModule {
         let size = height / 2;
         let y = parseInt((size * Math.sqrt(3) * (hex.i + hex.j / 2)).toString());
         let x = ((size * 3) / 2) * hex.j;
-        return new Vec3(x, y);
+        log('hex2pixel', x, y)
+        return new Vec3(x, -y);
     }
 
 
@@ -253,10 +267,9 @@ export class BattleViewUI extends BaseModule {
         // }
 
         let node = event.currentTarget;
-        warn("1111111111111111111", this.isHold)
         if (this.isHold) {
 
-            this.linegroup.destroy();
+            this.linegroup.destroyAllChildren();
             this.isHold = false;
 
             tween(node).to(0.1, { scale: Vec3.ONE }, { easing: "bounceOut" }).start()
@@ -294,15 +307,154 @@ export class BattleViewUI extends BaseModule {
                 this.selectArray = [];
                 this.canTouch = false;
 
-
-                // Laya.timer.once(150, this, this.verticalFall, []);
+                this.scheduleOnce(this.verticalFall, 0.15)
             } else {
                 this.selectArray.forEach(item => {
-                    item.select = false;
+                    item.getComponent(Hexagon).select = false;
                 })
                 this.selectHasBomb = [];
                 this.selectArray = [];
             }
+        }
+    }
+
+    /**
+ * 垂直下落填充方法
+ * 消除后要补充被消除掉的元素，补充动画元素前
+ * 按列把被消元素的上方元素下降，无可降后再随机进行填充
+ * 填满被消除的个数
+ */
+    verticalFall() {
+        // console.log(this.deleteArray.length)
+        this.currentLevelScore += this.deleteArray.length;
+        this.score.string = this.currentLevelScore.toString();
+        // this.changeProcessBar(this.deleteArray.length);
+
+        for (let i = 0; i < this.deleteArray.length; i++) {
+            let col = this.deleteArray[i].getComponent(Hexagon).col;
+            // let row = this.deleteArray[i].row;
+            if (!this.colNum[col]) {
+                this.colNum[col] = 1;
+            } else {
+                this.colNum[col]++;
+            }
+        }
+        // console.log(this.colNum)
+        // 要获取某一列方块 下方 消除方块的个数
+        this.totalArray.forEach(tolItem => {
+            this.deleteArray.forEach(item => {
+                if (item.getComponent(Hexagon).col == tolItem.getComponent(Hexagon).col && item.getComponent(Hexagon).row > tolItem.getComponent(Hexagon).row) {
+                    tolItem.getComponent(Hexagon).count++;
+                }
+            })
+        })
+
+        for (let i = 0; i < this.totalArray.length; i++) {
+            for (let j = 0; j < this.deleteArray.length; j++) {
+                if (this.deleteArray[j].getComponent(Hexagon).col == this.totalArray[i].getComponent(Hexagon).col && this.deleteArray[j].getComponent(Hexagon).row > this.totalArray[i].getComponent(Hexagon).row) {
+                    tween(this.totalArray[i])
+                        .to(0.1 + 0.1 * this.totalArray[i].getComponent(Hexagon).count, { position: new Vec3(this.totalArray[i].position.x, this.totalArray[i].position.y - 90 * this.totalArray[i].getComponent(Hexagon).count) }, { easing: 'sineOut' })
+                        .to(0.1, { position: new Vec3(this.totalArray[i].position.x, this.totalArray[i].position.y - 90 * this.totalArray[i].getComponent(Hexagon).count - 10 - 5 * this.setBounceDistance(this.totalArray[i].getComponent(Hexagon).count)) }, { easing: 'sineOut' })
+                        .to(0.1, { position: new Vec3(this.totalArray[i].position.x, this.totalArray[i].position.y - 90 * this.totalArray[i].getComponent(Hexagon).count) }, { easing: 'sineOut' }).start();
+
+                    this.totalArray[i].getComponent(Hexagon).row += this.totalArray[i].getComponent(Hexagon).count;
+                    break;
+                }
+            }
+        }
+        // this.selectHasBomb = [];
+        // this.deleteArray = [];
+        // this.colNum = {};
+        // this.canTouch = true;
+        // this.remainSteps--;
+        this.scheduleOnce(this.creatNewStar, 0.3)
+    }
+
+    /**
+     * 生成新的元素
+     */
+    creatNewStar() {
+        this.totalArray.forEach(tolItem => {
+            tolItem.getComponent(Hexagon).count = 0;
+        })
+
+
+        for (let p = -this.hexSide; p <= this.hexSide; p++) {
+            if (this.colNum[p] != null) {
+                for (let q = 0; q < this.colNum[p]; q++) {
+                    let index = parseInt((Math.random() * this.colorArray.length).toString());
+
+                    let node = instantiate(this.hexagon)
+                    node.parent = this.newStarGroup;
+
+                    node.getComponent(Hexagon).setSprite(index)
+                    node.name = "lbx";
+                    // node.getComponent(Hexagon).init(i, j, index)
+
+                    let _hexagon = node.getComponent(Hexagon);
+
+
+                    if (p >= 0) {
+                        node.setPosition(this.hex2pixel({ i: -4 - q - 1, j: p }, this.starWidth).x, this.hex2pixel({ i: -4 - q - 1, j: p }, this.starWidth).y);
+                        _hexagon.row = -4 - q + this.colNum[p];
+                    } else {
+                        node.setPosition(this.hex2pixel({ i: (-3 - p - q - 1 - 1), j: p }, this.starWidth).x, this.hex2pixel({ i: -3 - p - q - 1 - 1, j: p }, this.starWidth).y);
+                        _hexagon.row = -3 - p - q - 1 + this.colNum[p];
+                    }
+                    _hexagon.indexColor = index;
+                    _hexagon.col = p;
+                    _hexagon.count = 0;
+                    _hexagon.select = false;
+                    this.totalArray.push(node);
+                    node.on(Node.EventType.TOUCH_START, this.onTouchStart, this)
+                    node.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this)
+                }
+            }
+        }
+        // if (Math.random() > 0.85) {
+        //     let index = parseInt((Math.random() * this.newStarGroup.children.length - 1).toString());
+        //     this.newStarGroup.children[index].getComponent(Hexagon).setSprite(this.newStarGroup.children[index].getComponent(Hexagon).indexColor);
+        //     this.newStarGroup.children[index].name = "bomb";
+        // }
+
+
+        //下落
+        for (let k = 0; k < this.deleteArray.length; k++) {
+            tween(this.newStarGroup.children[k])
+                .to(0.3, {
+                    position: new Vec3(this.newStarGroup.children[k].position.x, this.newStarGroup.children[k].position.y - 90 * (this.colNum[this.newStarGroup.children[k].getComponent(Hexagon).col] + 1))
+                }, { easing: 'sineOut' })
+                .to(0.1, { position: new Vec3(this.newStarGroup.children[k].position.x, this.newStarGroup.children[k].position.y - 90 * (this.colNum[this.newStarGroup.children[k].getComponent(Hexagon).col] + 1) - 10 - 5 * this.setBounceDistance(this.colNum[this.newStarGroup.children[k].getComponent(Hexagon).col])) }, { easing: 'sineOut' })
+                .to(0.1, { position: new Vec3(this.newStarGroup.children[k].position.x, this.newStarGroup.children[k].position.y - 90 * (this.colNum[this.newStarGroup.children[k].getComponent(Hexagon).col] + 1)) })
+                .start()
+        }
+        log(this.newStarGroup.children, this.deleteArray.length)
+
+
+        while (this.newStarGroup.children.length > 0) {
+            this.newStarGroup.children[0].parent = this.hexgroup;
+        }
+        log(22, this.newStarGroup.children, this.deleteArray.length)
+        this.selectHasBomb = [];
+        this.deleteArray = [];
+        this.colNum = {};
+        this.canTouch = true;
+        this.remainSteps--;
+
+
+
+
+        // this.targetScoreText.changeText('剩余步数: ' + this.remainSteps);
+    }
+
+    /**
+     * 下落反弹设定
+     */
+    setBounceDistance(count) {
+        if (count <= 4) {
+            return count - 1
+        } else {
+            return 3
         }
     }
 
@@ -325,19 +477,19 @@ export class BattleViewUI extends BaseModule {
 
         } else if ((start.col + start.row) == (end.col + end.row)) {
             // console.log("左斜")
-            line.angle = 60;
+            line.angle = -60;
         } else {
             // console.log("右斜")
-            line.angle = 120;
+            line.angle = -120;
         }
     }
 
     /**
      * 消失动画
      */
-    DestoryAnimation(item: Hexagon) {
-        tween(item.node).to(0.3, { scale: new Vec3(0.1, 0.1) }).call(() => {
-            item.node.destroy()
+    DestoryAnimation(item: Node) {
+        tween(item).to(0.3, { scale: new Vec3(0.1, 0.1) }).call(() => {
+            item.destroy()
         }).start()
     }
 
@@ -358,10 +510,10 @@ export class BattleViewUI extends BaseModule {
     /**
      * 星星爆炸动画
      */
-    BoomAnimation(item: Hexagon) {
+    BoomAnimation(item: Node) {
         let boom = instantiate(this.boom);
         boom.parent = this.boomgroup;
-        boom.position = item.node.position;
+        boom.position = item.position;
         boom.getComponent(Animation).play();
         boom.getComponent(Animation).on(Animation.EventType.FINISHED, () => {
             boom.destroy();
@@ -378,15 +530,15 @@ export class BattleViewUI extends BaseModule {
 
         this.updateArray();
         for (let j = 0; j < this.totalArray.length; j++) {
-            if ((this.totalArray[j].col == _hexagon.col && Math.abs(this.totalArray[j].row - _hexagon.row) == 1)
-                || (_hexagon.col - this.totalArray[j].col == 1 && (_hexagon.row - this.totalArray[j].row == 0 || _hexagon.row - this.totalArray[j].row == -1))
-                || (_hexagon.col - this.totalArray[j].col == -1 && (_hexagon.row - this.totalArray[j].row == 0 || _hexagon.row - this.totalArray[j].row == 1))) {
+            if ((this.totalArray[j].getComponent(Hexagon).col == _hexagon.col && Math.abs(this.totalArray[j].getComponent(Hexagon).row - _hexagon.row) == 1)
+                || (_hexagon.col - this.totalArray[j].getComponent(Hexagon).col == 1 && (_hexagon.row - this.totalArray[j].getComponent(Hexagon).row == 0 || _hexagon.row - this.totalArray[j].getComponent(Hexagon).row == -1))
+                || (_hexagon.col - this.totalArray[j].getComponent(Hexagon).col == -1 && (_hexagon.row - this.totalArray[j].getComponent(Hexagon).row == 0 || _hexagon.row - this.totalArray[j].getComponent(Hexagon).row == 1))) {
                 this.DestoryAnimation(this.totalArray[j]);
                 // this.bombExplosion(this.totalArray[j]);
                 this.BoomAnimation(this.totalArray[j]);
-                if (!this.totalArray[j].select) {
+                if (!this.totalArray[j].getComponent(Hexagon).select) {
                     this.deleteArray.push(this.totalArray[j]);
-                    this.totalArray[j].select = true;
+                    this.totalArray[j].getComponent(Hexagon).select = true;
                 }
                 if (this.totalArray[j].name == 'bomb') {
                     // console.log(this.totalArray.length)
@@ -398,19 +550,29 @@ export class BattleViewUI extends BaseModule {
     }
 
     updateArray() {
-        // console.log('delete' + this.deleteArray.length)
+        console.log('delete' + this.deleteArray.length)
         for (let k = 0; k < this.deleteArray.length; k++) {
             let index = this.totalArray.indexOf(this.deleteArray[k]);
             if (index > -1) {
                 this.totalArray.splice(index, 1);
             }
         }
-        // console.log('total new' + this.totalArray.length)
+        console.log('total new' + this.totalArray.length)
+
+
         // for (let m = 0; m < this.deleteArray.length; m++) {
         //     if (this.deleteArray[m].name == 'bomb') {
         //         this.bombProps(this.deleteArray[m]);
         //     }
         // }
+    }
+
+
+    update(dt: number) {
+        // log(this.totalArray.length)
+        this.totalArray.forEach(ele => {
+            ele.children[0].getComponent(Label).string = ele.getComponent(Hexagon).row + "-" + ele.getComponent(Hexagon).col
+        })
     }
 }
 
