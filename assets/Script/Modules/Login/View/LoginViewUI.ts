@@ -1,9 +1,9 @@
 
 import { _decorator, Component, Node, CCObject, Event, Label } from 'cc';
-import { BaseModule } from '../../../Core/Base/BaseModule';
-import { BaseView } from '../../../Core/Base/BaseView';
-import { NotifyEventType } from '../../../Core/Data/NotifyEventType';
-import { SysEventType } from '../../../Core/Data/SysEventType';
+import { BaseModule } from '../../../core/base/BaseModule';
+import { NotifyEventType } from '../../../core/data/NotifyEventType';
+import { SysEventType } from '../../../core/data/SysEventType';
+
 const { ccclass, property } = _decorator;
 
 /**

@@ -1,7 +1,8 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { Proxy } from '../../Core/MVC/Proxy';
-import { BattleVO } from './Data/BattleVO';
+import { BattleVO } from './vo/BattleVO';
+import { Proxy } from '../../core/puremvc/Proxy';
+
 const { ccclass, property } = _decorator;
 
 /**

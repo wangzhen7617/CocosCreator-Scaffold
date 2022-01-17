@@ -1,22 +1,20 @@
 
-import { _decorator, Component, Node, view, log } from 'cc';
-import { BaseInterface } from '../../../Core/Base/BaseInterface';
-import { BaseScene } from '../../../Core/Base/BaseScene';
-import { GlobalParams } from '../../../Core/Data/GlobalParams';
-import { ModuleType } from '../../../Core/Data/ModuleType';
-import { AssetsMgr } from '../../../Core/Mgr/AssetsMgr';
-import { UIMgr } from '../../../Core/Mgr/UIMgr';
-import { AppFacade } from '../../../Core/MVC/AppFacade';
-import { BattleMediator } from '../../Battle/BattleMediator';
-import { BattleProxy } from '../../Battle/BattleProxy';
-import { BattleVO } from '../../Battle/Data/BattleVO';
-import { HotUpdateMediator } from '../../Hotupdate/HotUpdateMediator';
-import { HotUpdateProxy } from '../../Hotupdate/HotUpdateProxy';
-import { LoginMediator } from '../../Login/LoginMediator';
-import { LoginProxy } from '../../Login/LoginProxy';
-import { NetworkProxy } from '../../Network/NetworkProxy';
-import { SceneType } from '../Data/SceneType';
+import { _decorator } from 'cc';
+import { BaseScene } from '../../../core/base/BaseScene';
+import { GlobalParams } from '../../../core/data/GlobalParams';
+import { ModuleType } from '../../../core/data/ModuleType';
+import { AssetsMgr } from '../../../core/mgr/AssetsMgr';
+import { UIMgr } from '../../../core/mgr/UIMgr';
+import { Facade } from '../../../core/puremvc/Facade';
+import { Logger } from '../../../core/utils/Logger';
+import { HotUpdateMediator } from '../../hotupdate/HotUpdateMediator';
+import { HotUpdateProxy } from '../../hotupdate/HotUpdateProxy';
+import { NetworkProxy } from '../../network/NetworkProxy';
 import { SceneProxy } from '../SceneProxy';
+import { SceneType } from '../data/SceneType';
+import { JsonUtil } from '../../../core/utils/JsonUtil';
+import { config } from '../../../core/data/Config';
+
 const { ccclass, property } = _decorator;
 
 /**
@@ -38,40 +36,43 @@ export class StartScene extends BaseScene {
 
 
     start() {
-        // cc.macro.CLEANUP_IMAGE_CACHE = true
 
-        GlobalParams.screenFitAll = (view.getCanvasSize().width / view.getCanvasSize().height) > (16 / 9);
-        // if(cc.sys.isBrowser)
-        //     GlobalParams.screenFitAll = true;
-
-        GlobalParams.currentSceneName = SceneType.Start;
-
-        AppFacade.getInstance().removeAll();
-        AppFacade.getInstance().registerProxy(ModuleType.SCENE, new SceneProxy());
-        AppFacade.getInstance().registerProxy(ModuleType.HOT_UPDATE, new HotUpdateProxy());
-        AppFacade.getInstance().registerMediator(ModuleType.HOT_UPDATE, new HotUpdateMediator());
-        AppFacade.getInstance().registerProxy(ModuleType.LOGIN, new LoginProxy())
-        AppFacade.getInstance().registerMediator(ModuleType.LOGIN, new LoginMediator())
-
-        AppFacade.getInstance().registerProxy(ModuleType.Battle, new BattleProxy())
-        AppFacade.getInstance().registerMediator(ModuleType.Battle, new BattleMediator())
-
-
-        // AppFacade.getInstance().registerProxy(ModuleType.SOCKET, new SocketProxy());
-        AppFacade.getInstance().registerProxy(ModuleType.NETWORK, new NetworkProxy());
-        // AppFacade.getInstance().registerProxy(ModuleType.RECONNECT, new ReconnectProxy());
-        // AppFacade.getInstance().registerMediator(ModuleType.RECONNECT, new ReconnectMediator());
-        AssetsMgr.init(this.assetsComplete);
         super.start();
+
+        GlobalParams.sceneName = SceneType.Start;
+
+        Facade.getInstance().removeAll();
+        Facade.getInstance().registerProxy(ModuleType.SCENE, new SceneProxy());
+        Facade.getInstance().registerProxy(ModuleType.HOT_UPDATE, new HotUpdateProxy());
+        Facade.getInstance().registerMediator(ModuleType.HOT_UPDATE, new HotUpdateMediator());
+
+
+        Facade.getInstance().registerProxy(ModuleType.NETWORK, new NetworkProxy());
+
+
+        // Facade.getInstance().registerProxy(ModuleType.RECONNECT, new ReconnectProxy());
+        // Facade.getInstance().registerMediator(ModuleType.RECONNECT, new ReconnectMediator());
+
+
+        JsonUtil.load("cfg", this.jsonComplete)
     }
 
-    private assetsComplete = (): void => {
-        // AlertManager.showLoading('正在下载资源');
+    jsonComplete(json: any) {
+        config.init(json)
+        Logger.log(config.gameConfig, config.sceneConfig)
         // PBBuild.init();
         // AudioManager.init();
-        UIMgr.showModule(ModuleType.HOT_UPDATE);
-    };
 
+        AssetsMgr.loadScene(
+            SceneType.Start,
+            false,
+            () => {
+                UIMgr.showModule(ModuleType.HOT_UPDATE);
+                // UIMgr.showLoading('正在下载资源');
+            },
+            false, false
+        );
+    }
     protected initView() { }
 }
 

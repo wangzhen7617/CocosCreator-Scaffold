@@ -1,0 +1,32 @@
+{
+    "config": {
+        "webUrl": "http://127.0.0.1",
+        "version": "1.0.0"
+    },
+    "scene": {
+        "Start": {
+            "packageNick": "初始化场景",
+            "preAssets": ["HotUpdateViewUI", "common/Mask", "common/Loading"],
+            "preAtalas": [],
+            "isLoaded": false
+        },
+        "Login": {
+            "packageNick": "登录",
+            "preAssets": ["LoginViewUI"],
+            "preAtalas": [],
+            "isLoaded": false
+        },
+        "Main": {
+            "packageNick": "主场景",
+            "preAssets": ["MainViewUI"],
+            "preAtalas": [],
+            "isLoaded": false
+        },
+        "Battle": {
+            "packageNick": "战斗",
+            "preAssets": ["BattleViewUI"],
+            "preAtalas": [],
+            "isLoaded": false
+        }
+    }
+}

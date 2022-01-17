@@ -1,7 +1,8 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { Mediator } from '../../Core/MVC/Mediator';
+import { Mediator } from '../../core/puremvc/Mediator';
 import { BattleModule } from './BattleModule';
+
 const { ccclass, property } = _decorator;
 
 /**

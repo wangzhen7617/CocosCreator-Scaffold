@@ -1,6 +1,7 @@
 
-import { _decorator, Component, Node, log } from 'cc';
-import { SysEventType } from '../Data/SysEventType';
+import { _decorator, Component, Node } from 'cc';
+import { SysEventType } from '../data/SysEventType';
+import { Logger } from '../utils/Logger';
 import { BaseModule } from './BaseModule';
 const { ccclass, property } = _decorator;
 
@@ -41,12 +42,12 @@ export class BaseView extends BaseModule {
     protected customDestroy(): void { }
 
     protected clickMask(): void {
-        log('==========clickMask==========');
+        Logger.log('==========clickMask==========');
         this.closeThisWin();
     }
 
     protected clickClose(): void {
-        log('==========clickClose==========');
+        Logger.log('==========clickClose==========');
         this.closeThisWin();
         // this.closeThisWin({ showAnimation: true, view: this.node, release: true });
     }

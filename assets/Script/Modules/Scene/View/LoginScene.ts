@@ -1,8 +1,12 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { BaseScene } from '../../../Core/Base/BaseScene';
-import { ModuleType } from '../../../Core/Data/ModuleType';
-import { UIMgr } from '../../../Core/Mgr/UIMgr';
+import { BaseScene } from '../../../core/base/BaseScene';
+import { ModuleType } from '../../../core/data/ModuleType';
+import { UIMgr } from '../../../core/mgr/UIMgr';
+import { Facade } from '../../../core/puremvc/Facade';
+import { LoginMediator } from '../../login/LoginMediator';
+import { LoginProxy } from '../../login/LoginProxy';
+
 const { ccclass, property } = _decorator;
 
 /**
@@ -24,6 +28,9 @@ export class LoginScene extends BaseScene {
 
     start() {
         super.start()
+        Facade.getInstance().registerProxy(ModuleType.LOGIN, new LoginProxy())
+        Facade.getInstance().registerMediator(ModuleType.LOGIN, new LoginMediator())
+        
         UIMgr.showModule(ModuleType.LOGIN);
         // AssetsManager.reloadModule(SubGameType.HALL, false, () => {
         // })

@@ -18,9 +18,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('GlobalParams')
 export class GlobalParams extends Component {
-    public static localGameInfo: any = {};
-    public static currentSceneName: string = ""; //当前场景名称
-    public static screenFitAll: boolean = false;    //全面屏
+    public static sceneName: string = ""; //当前场景名称
     public static isAppBackGround: boolean = false;   //切入后台
 }
 

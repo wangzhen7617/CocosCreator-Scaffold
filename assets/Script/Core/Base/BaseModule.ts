@@ -1,10 +1,10 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { ModuleEventType } from '../Data/ModuleEventType';
-import { UIMgr } from '../Mgr/UIMgr';
-import { DispatchComponent } from '../MVC/DispatchComponent';
-import { Dispatcher } from '../MVC/Dispatcher';
-import { BaseInterface } from './BaseInterface';
+import { ModuleEventType } from '../data/ModuleEventType';
+import { UIMgr } from '../mgr/UIMgr';
+import { DispatchComponent } from '../puremvc/DispatchComponent';
+import { Dispatcher } from '../puremvc/Dispatcher';
+
 const { ccclass, property } = _decorator;
 
 /**

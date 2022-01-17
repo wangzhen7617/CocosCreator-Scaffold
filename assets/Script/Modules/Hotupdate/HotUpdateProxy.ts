@@ -1,12 +1,12 @@
 
-import { _decorator, Component, Node, game, Game, log } from 'cc';
-import { GameType } from '../../Core/Data/GameType';
-import { NotifyEventType } from '../../Core/Data/NotifyEventType';
-import { AssetsMgr } from '../../Core/Mgr/AssetsMgr';
-import { Proxy } from '../../Core/MVC/Proxy';
-import { SceneType } from '../Scene/Data/SceneType';
-import { HotUpdateVO } from './Data/HotUpdateVO';
+import { _decorator, Component, Node, game, Game } from 'cc';
+import { NotifyEventType } from '../../core/data/NotifyEventType';
+import { AssetsMgr } from '../../core/mgr/AssetsMgr';
+import { HotUpdateVO } from './vo/HotUpdateVO';
 const { ccclass, property } = _decorator;
+import { Proxy } from '../../core/puremvc/Proxy';
+import { Logger } from '../../core/utils/Logger';
+import { SceneType } from '../scene/data/SceneType';
 
 /**
  * 
@@ -24,6 +24,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('HotUpdateProxy')
 export class HotUpdateProxy extends Proxy {
+    vo: HotUpdateVO;
 
     constructor() {
         super();
@@ -31,7 +32,6 @@ export class HotUpdateProxy extends Proxy {
     }
 
     protected addEvent(): void {
-        //原生代码发送过来的事件
         game.on(Game.EVENT_HIDE, this.onGameHide, this);
         game.on(Game.EVENT_SHOW, this.onGameShow, this);
 
@@ -39,17 +39,17 @@ export class HotUpdateProxy extends Proxy {
     }
 
     private onGameHide(): void {
-        log("onGameHide");
+        Logger.log("onGameHide");
     }
 
 
     private onGameShow(): void {
-        log("onGameShow");
+        Logger.log("onGameShow");
     }
 
     private switchGame() {
-        AssetsMgr.loadGame(
-            GameType.Login,
+        AssetsMgr.loadScene(
+            SceneType.Login,
             false,
             () => {
                 this.sendNotification(NotifyEventType.SCENE_SWITCH_SCENE, SceneType.Login);
@@ -57,7 +57,6 @@ export class HotUpdateProxy extends Proxy {
             false
         );
     }
-
 }
 
 /**

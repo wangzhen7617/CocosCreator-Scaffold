@@ -1,8 +1,8 @@
 
-import { _decorator, Component, Node, log, Prefab, instantiate, Vec3, EventTouch, Tween, tween, easing, warn, Animation, UITransform, Vec2, Label } from 'cc';
-import { Hexagon } from '../../../../resources/Prefabs/Hexagon';
-import { BaseModule } from '../../../Core/Base/BaseModule';
-import { SysEventType } from '../../../Core/Data/SysEventType';
+import { _decorator, Component, Node, log, Prefab, instantiate, Vec3, EventTouch, Tween, tween, Animation, UITransform, Vec2, Label } from 'cc';
+import { Hexagon } from '../../../../resources/prefabs/viewui/Hexagon';
+import { BaseModule } from '../../../core/base/BaseModule';
+import { Logger } from '../../../core/utils/Logger';
 const { ccclass, property } = _decorator;
 
 /**
@@ -93,9 +93,7 @@ export class BattleViewUI extends BaseModule {
 
     protected addEvent() {
         this.node.getChildByPath('Canvas/Background').on(Node.EventType.MOUSE_DOWN, () => {
-            warn(
-                "啊啊啊啊啊啊啊啊啊啊"
-            )
+
         }, this)
         this.node.getChildByPath('Canvas/Background').on(Node.EventType.MOUSE_UP, this.onStartMouseUp, this)
     }
@@ -106,7 +104,7 @@ export class BattleViewUI extends BaseModule {
             for (let j = -this.hexSide; j <= this.hexSide; j++) {
                 if (i * j > 0 && Math.abs(i + j) > this.hexSide) continue;
                 if (i * j < 0 && (Math.abs(i) > this.hexSide || Math.abs(j) > this.hexSide)) continue;
-                log(i, j)
+                Logger.log(i, j)
 
 
                 let index = parseInt((Math.random() * this.colorArray.length).toString());
@@ -167,19 +165,17 @@ export class BattleViewUI extends BaseModule {
         if (!this.isHold) {
             return
         }
-        log(event)
+        Logger.log(event)
 
         let node = event.target as Node;
         let _hexagon = node.getComponent(Hexagon)
         let convertPosition = this.node.getComponent(UITransform).convertToNodeSpaceAR(new Vec3(event.getUILocation().x, event.getUILocation().y))
 
-        // log('move', node.getComponent(UITransform).getBoundingBox(), convertPosition)
         if (node.getComponent(UITransform).getBoundingBox().contains(new Vec2(convertPosition.x, convertPosition.y))) {
         } else {
             // 当前对象
             let curSelect = this.selectArray[this.selectArray.length - 1].getComponent(Hexagon);
             if (curSelect.eventSelect) {
-                log("onMouseLeave")
                 curSelect.eventSelect = false
                 tween(node).to(0.1, { scale: Vec3.ONE }, { easing: "bounceOut" }).start()
             }
@@ -254,18 +250,13 @@ export class BattleViewUI extends BaseModule {
         let size = height / 2;
         let y = parseInt((size * Math.sqrt(3) * (hex.i + hex.j / 2)).toString());
         let x = ((size * 3) / 2) * hex.j;
-        log('hex2pixel', x, y)
+        Logger.log('hex2pixel', x, y)
         return new Vec3(x, -y);
     }
 
 
 
     onStartMouseUp(event: MouseEvent) {
-        // let DIV = document.getElementById("layaCanvas");
-        // DIV.onmouseout = function () {
-        //     console.log(1);
-        // }
-
         let node = event.currentTarget;
         if (this.isHold) {
 
@@ -325,7 +316,6 @@ export class BattleViewUI extends BaseModule {
  * 填满被消除的个数
  */
     verticalFall() {
-        // console.log(this.deleteArray.length)
         this.currentLevelScore += this.deleteArray.length;
         this.score.string = this.currentLevelScore.toString();
         // this.changeProcessBar(this.deleteArray.length);
@@ -339,7 +329,6 @@ export class BattleViewUI extends BaseModule {
                 this.colNum[col]++;
             }
         }
-        // console.log(this.colNum)
         // 要获取某一列方块 下方 消除方块的个数
         this.totalArray.forEach(tolItem => {
             this.deleteArray.forEach(item => {
@@ -428,13 +417,11 @@ export class BattleViewUI extends BaseModule {
                 .to(0.1, { position: new Vec3(this.newStarGroup.children[k].position.x, this.newStarGroup.children[k].position.y - 90 * (this.colNum[this.newStarGroup.children[k].getComponent(Hexagon).col] + 1)) })
                 .start()
         }
-        log(this.newStarGroup.children, this.deleteArray.length)
 
 
         while (this.newStarGroup.children.length > 0) {
             this.newStarGroup.children[0].parent = this.hexgroup;
         }
-        log(22, this.newStarGroup.children, this.deleteArray.length)
         this.selectHasBomb = [];
         this.deleteArray = [];
         this.colNum = {};
@@ -473,13 +460,10 @@ export class BattleViewUI extends BaseModule {
 
 
         if (start.col == end.col) {
-            // console.log("竖直")
 
         } else if ((start.col + start.row) == (end.col + end.row)) {
-            // console.log("左斜")
             line.angle = -60;
         } else {
-            // console.log("右斜")
             line.angle = -120;
         }
     }
@@ -524,8 +508,6 @@ export class BattleViewUI extends BaseModule {
      * 炸弹道具逻辑
      */
     bombProps(node: Node) {
-        // console.log('total' + this.totalArray.length)
-        // console.log(this.deleteArray.length)
         let _hexagon = node.getComponent(Hexagon)
 
         this.updateArray();
@@ -541,7 +523,6 @@ export class BattleViewUI extends BaseModule {
                     this.totalArray[j].getComponent(Hexagon).select = true;
                 }
                 if (this.totalArray[j].name == 'bomb') {
-                    // console.log(this.totalArray.length)
                     this.bombExplosion(this.totalArray[j]);
                     this.bombProps(this.totalArray[j]);
                 }
@@ -550,14 +531,14 @@ export class BattleViewUI extends BaseModule {
     }
 
     updateArray() {
-        console.log('delete' + this.deleteArray.length)
+        Logger.log('delete' + this.deleteArray.length)
         for (let k = 0; k < this.deleteArray.length; k++) {
             let index = this.totalArray.indexOf(this.deleteArray[k]);
             if (index > -1) {
                 this.totalArray.splice(index, 1);
             }
         }
-        console.log('total new' + this.totalArray.length)
+        Logger.log('total new' + this.totalArray.length)
 
 
         // for (let m = 0; m < this.deleteArray.length; m++) {
@@ -569,7 +550,6 @@ export class BattleViewUI extends BaseModule {
 
 
     update(dt: number) {
-        // log(this.totalArray.length)
         this.totalArray.forEach(ele => {
             ele.children[0].getComponent(Label).string = ele.getComponent(Hexagon).row + "-" + ele.getComponent(Hexagon).col
         })

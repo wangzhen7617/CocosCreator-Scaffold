@@ -1,8 +1,9 @@
 
-import { _decorator, Component, Node, instantiate, resources, director, CCObject, log, isValid } from 'cc';
-import { ModuleEventType } from '../Data/ModuleEventType';
-import { AppFacade } from '../MVC/AppFacade';
-import { Mediator } from '../MVC/Mediator';
+import { _decorator, Component, Node, instantiate, resources, director, isValid, UITransform } from 'cc';
+import { Loading } from '../common/Loading';
+import { Facade } from '../puremvc/Facade';
+import { Mediator } from '../puremvc/Mediator';
+import { Logger } from '../utils/Logger';
 const { ccclass, property } = _decorator;
 
 /**
@@ -22,10 +23,10 @@ const { ccclass, property } = _decorator;
 @ccclass('UIMgr')
 export class UIMgr extends Component {
     public static uiMap: Array<any> = [];
-    private static mask: any;
-    private static alert: any;
-    private static tips: any;
-    private static loading: any;
+    private static mask: Node;
+    private static alert: Node;
+    private static tips: Node;
+    private static loading: Node;
 
     public static init(): void {
         UIMgr.uiMap = [];
@@ -46,23 +47,21 @@ export class UIMgr extends Component {
     }
 
     private static createMask(): void {
-        UIMgr.mask = instantiate(resources.get('Prefabs/MaskViewUI'));
-        UIMgr.mask.opacity = 100;
-        UIMgr.mask.zIndex = 9980;
+        UIMgr.mask = instantiate(resources.get('prefabs/common/Mask'));
+        UIMgr.mask.getComponent(UITransform).priority = 9980;
     }
 
     private static createAlert(): void {
-        UIMgr.alert = instantiate(resources.get('Prefabs/AlertViewUI'));
-        UIMgr.alert.zIndex = 9981;
+        UIMgr.alert = instantiate(resources.get('prefabs/common/Alert'));
+        UIMgr.alert.getComponent(UITransform).priority = 9981;
     }
 
     private static createLoading(): void {
-        UIMgr.loading = instantiate(resources.get('Prefabs/LoadingViewUI'));
-        UIMgr.loading.zIndex = 9982;
+        UIMgr.loading = instantiate(resources.get('prefabs/common/Loading'));
+        UIMgr.loading.getComponent(UITransform).priority = 9982;
     }
 
     public static getRootNode(): unknown {
-        // cc.log('=====getRootNode====');
         let scene = director.getScene();
         if (scene.isValid) {
             return scene.getChildByName('Canvas');
@@ -72,74 +71,48 @@ export class UIMgr extends Component {
 
     public static showLoading(
         str: string,
+        hideLoad: boolean = false,
+        count: number = 2 << 20,
         callBack?: (this: void) => void,
-        retryCallBack?: (this: void) => void,
-        doRetryOnce?: boolean,
-        totalCount?: number,
-        b_hide_bg?: boolean,
-        b_hideCount?: boolean,
-        errorStr?: string
     ): void {
-        // cc.log('=====showLoading===');
-        // if (errorStr) LoadingViewUI.errorStr = errorStr;
-        // if (b_hideCount) LoadingViewUI.b_hideCount = b_hideCount;
-        // if (!cc.isValid(AlertManager.loading)) {
-        //     AlertManager.createLoading();
-        // }
-        // if (AlertManager.loading.parent) {
-        //     AlertManager.hideLoading();
-        // }
-        // try {
-        //     let loadingView: any = AlertManager.loading.getComponent('LoadingViewUI');
-        //     let rootNode: any = AlertManager.getRootNode();
-        //     rootNode.addChild(AlertManager.loading);
-        //     loadingView.currentCount = 0;
-        //     loadingView.totalCount = totalCount || 100;
-        //     loadingView.showLoading(str, callBack, retryCallBack);
-
-        //     if (doRetryOnce) {
-        //         retryCallBack();
-        //     }
-        // } catch (error) {
-        //     AlertManager.showTips(error);
-        // }
-
-        // loadingView.node.getChildByName("MaskViewUI").active = true;
+        Logger.log("show loading")
+        if (!isValid(UIMgr.loading)) {
+            UIMgr.createLoading();
+        }
+        if (UIMgr.loading.parent) {
+            UIMgr.hideLoading();
+        }
+        if (!isValid(UIMgr.mask)) {
+            UIMgr.createMask();
+        }
+        let loading: Loading = UIMgr.loading.getComponent(Loading);
+        let rootNode: any = UIMgr.getRootNode();
+        rootNode.addChild(UIMgr.mask);
+        rootNode.addChild(UIMgr.loading);
+        loading.showLoading(str, hideLoad, count, () => {
+            Logger.log("test loading1")
+            UIMgr.mask.removeFromParent();
+            if (callBack) callBack()
+        });
 
     }
 
     public static hideLoading(): void {
-        // cc.log('=====hideLoading===');
-        // if (cc.isValid(AlertManager.loading)) {
-        //     AlertManager.loading.getComponent('LoadingViewUI').hideLoading();
-        // }
+        if (isValid(UIMgr.loading)) {
+            UIMgr.loading.getComponent(Loading).hideLoading();
+        }
+        if (isValid(UIMgr.mask)) {
+            UIMgr.mask.removeFromParent();
+        }
     }
 
     public static isLoading(): boolean {
         return isValid(UIMgr.loading) && UIMgr.loading.parent != null;
     }
 
-    public static setLoadingCurrentCount(value: number): void {
-        // if (cc.isValid(AlertManager.loading)) {
-        //     AlertManager.loading.getComponent('LoadingViewUI').currentCount = value;
-        // }
-    }
-
-    public static setLoadingTotalCount(value: number): void {
-        // if (cc.isValid(AlertManager.loading)) {
-        //     AlertManager.loading.getComponent('LoadingViewUI').totalCount = value;
-        // }
-    }
-
-    public static setLoadingStr(value: number) {
-        // if (cc.isValid(AlertManager.loading)) {
-        //     AlertManager.loading.getComponent('LoadingViewUI').progressStr = value;
-        // }
-    }
-
     public static showTips(str: string, showTime?: number, posY?: number) {
         // if (!AlertManager.tips || !AlertManager.tips.parent) {
-        //     AlertManager.tips = cc.instantiate(cc.loader.getRes('Prefabs/TipsViewUI'));
+        //     AlertManager.tips = cc.instantiate(cc.loader.getRes('prefabs/TipsViewUI'));
         //     AlertManager.tips.zIndex = 9983;
         //     let rootNode: any = AlertManager.getRootNode();
         //     rootNode.addChild(AlertManager.tips);
@@ -209,7 +182,7 @@ export class UIMgr extends Component {
     }
 
     public static showModule(moduleName: string): void {
-        let mediator: Mediator = AppFacade.getInstance().getMediator(moduleName);
+        let mediator: Mediator = Facade.getInstance().getMediator(moduleName);
         if (mediator != null) {
             if (mediator.getModuleView() != null) {
                 UIMgr.removeModule(moduleName);
@@ -218,12 +191,12 @@ export class UIMgr extends Component {
             let newUI: any = mediator.addModuleToScene(rootNode);
             UIMgr.uiMap.push({ moduleName: moduleName, ui: newUI });
         } else {
-            log('showModule......mediator..null....' + moduleName);
+            Logger.warn('showModule......mediator..null....' + moduleName);
         }
     }
 
     public static removeModule(moduleName: string): void {
-        log('====removeModule===', moduleName);
+        Logger.log('====removeModule===', moduleName);
         let moduleUI: any = UIMgr.getModuleUI(moduleName);
         if (moduleUI != null) {
             UIMgr.destroyModuleUI(moduleUI);
@@ -231,8 +204,8 @@ export class UIMgr extends Component {
         }
     }
 
-    public static destroyModuleUI(moduleUI: any): void {
-        let mediator = AppFacade.getInstance().getMediator(moduleUI.getModuleName());
+    private static destroyModuleUI(moduleUI: any): void {
+        let mediator = Facade.getInstance().getMediator(moduleUI.getModuleName());
         mediator.removeModule();
     }
 
@@ -249,7 +222,7 @@ export class UIMgr extends Component {
         return null;
     }
 
-    public static removeMoudleUI(moduleName: string): void {
+    private static removeMoudleUI(moduleName: string): void {
         for (let i: number = UIMgr.uiMap.length - 1; i >= 0; i--) {
             if (UIMgr.uiMap[i].moduleName == moduleName) {
                 UIMgr.uiMap.splice(i, 1);

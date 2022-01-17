@@ -1,8 +1,7 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { ModuleType } from '../../Core/Data/ModuleType';
-import { NotifyEventType } from '../../Core/Data/NotifyEventType';
-import { Mediator } from '../../Core/MVC/Mediator';
+import { NotifyEventType } from '../../core/data/NotifyEventType';
+import { Mediator } from '../../core/puremvc/Mediator';
 import { LoginModule } from './LoginModule';
 const { ccclass, property } = _decorator;
 

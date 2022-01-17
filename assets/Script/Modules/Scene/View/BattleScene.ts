@@ -1,8 +1,12 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { BaseScene } from '../../../Core/Base/BaseScene';
-import { ModuleType } from '../../../Core/Data/ModuleType';
-import { UIMgr } from '../../../Core/Mgr/UIMgr';
+import { BaseScene } from '../../../core/base/BaseScene';
+import { ModuleType } from '../../../core/data/ModuleType';
+import { UIMgr } from '../../../core/mgr/UIMgr';
+import { Facade } from '../../../core/puremvc/Facade';
+import { BattleMediator } from '../../battle/BattleMediator';
+import { BattleProxy } from '../../battle/BattleProxy';
+
 const { ccclass, property } = _decorator;
 
 /**
@@ -24,6 +28,9 @@ export class BattleScene extends BaseScene {
 
     start() {
         super.start()
+        Facade.getInstance().registerProxy(ModuleType.Battle, new BattleProxy())
+        Facade.getInstance().registerMediator(ModuleType.Battle, new BattleMediator())
+        
         UIMgr.showModule(ModuleType.Battle);
         // AssetsManager.reloadModule(SubGameType.HALL, false, () => {
         // })

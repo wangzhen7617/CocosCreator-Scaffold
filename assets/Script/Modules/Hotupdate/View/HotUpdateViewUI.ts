@@ -1,11 +1,11 @@
 
-import { _decorator, Component, Node, sys, JsonAsset, AssetManager, Label, Game, Prefab, instantiate, EventTouch, Vec3, UITransform, Vec2, warn, loader, log, Graphics, view, Layers } from 'cc';
+import { _decorator, Component, Node, sys, JsonAsset, AssetManager, Label, Game, Prefab, instantiate, EventTouch, Graphics, view, Layers } from 'cc';
 import { BUILD, JSB } from 'cc/env';
-import { BaseModule } from '../../../Core/Base/BaseModule';
-import { GameType } from '../../../Core/Data/GameType';
-import { GlobalParams } from '../../../Core/Data/GlobalParams';
-import { NotifyEventType } from '../../../Core/Data/NotifyEventType';
-import { UIMgr } from '../../../Core/Mgr/UIMgr';
+import { BaseModule } from '../../../core/base/BaseModule';
+import { config } from '../../../core/data/Config';
+import { GlobalParams } from '../../../core/data/GlobalParams';
+import { NotifyEventType } from '../../../core/data/NotifyEventType';
+import { Logger } from '../../../core/utils/Logger';
 const { ccclass, property } = _decorator;
 
 /**
@@ -25,8 +25,6 @@ const { ccclass, property } = _decorator;
 @ccclass('HotUpdateView')
 export class HotUpdateView extends BaseModule {
 
-    @property(JsonAsset)
-    cfgJson: JsonAsset = null;
     @property(Label)
     tip: Label = null;
 
@@ -53,9 +51,6 @@ export class HotUpdateView extends BaseModule {
     private initHotUpdate(): void { }
 
     private runGame() {
-
-        let json: any = this.cfgJson.json;
-        GlobalParams.localGameInfo = json.Game;;
         this.sendEvent(NotifyEventType.HOT_UPDATE_SWITCH_NEXT)
     }
 

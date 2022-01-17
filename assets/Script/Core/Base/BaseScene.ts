@@ -1,6 +1,5 @@
 
-import { _decorator, Component, Node, Canvas, log } from 'cc';
-import { BaseInterface } from './BaseInterface';
+import { _decorator, Component } from 'cc';
 const { ccclass, property } = _decorator;
 
 /**

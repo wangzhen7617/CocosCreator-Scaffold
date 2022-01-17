@@ -1,6 +1,6 @@
-import { ModuleType } from "../../Core/Data/ModuleType";
-import { Module } from "../../Core/MVC/Module";
 import { _decorator, Component, Node } from 'cc';
+import { ModuleType } from '../../core/data/ModuleType';
+import { Module } from '../../core/puremvc/Module';
 const { ccclass, property } = _decorator;
 
 

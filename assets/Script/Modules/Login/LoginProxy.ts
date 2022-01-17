@@ -1,14 +1,13 @@
 
-import { _decorator, Component, Node, warn, log } from 'cc';
-import { GameType } from '../../Core/Data/GameType';
-import { NotifyEventType } from '../../Core/Data/NotifyEventType';
-import { AssetsMgr } from '../../Core/Mgr/AssetsMgr';
-import { DispatcherEvent } from '../../Core/MVC/DispatcherEvent';
-import { Proxy } from '../../Core/MVC/Proxy';
-import { s2c } from '../Network/Data/s2c';
-import { SceneType } from '../Scene/Data/SceneType';
-import { LoginState } from './Data/LoginState';
-import { LoginVO } from './Data/LoginVO';
+import { _decorator } from 'cc';
+import { NotifyEventType } from '../../core/data/NotifyEventType';
+import { AssetsMgr } from '../../core/mgr/AssetsMgr';
+import { DispatcherEvent } from '../../core/puremvc/DispatcherEvent';
+import { LoginState } from './vo/LoginState';
+import { LoginVO } from './vo/LoginVO';
+import { Proxy } from '../../core/puremvc/Proxy';
+import { SceneType } from '../scene/data/SceneType';
+
 const { ccclass, property } = _decorator;
 
 /**
@@ -61,8 +60,8 @@ export class LoginProxy extends Proxy {
     }
 
     private switchSceneToBattle(event: DispatcherEvent) {
-        AssetsMgr.loadGame(
-            GameType.Battle,
+        AssetsMgr.loadScene(
+            SceneType.Battle,
             false,
             () => {
                 this.sendNotification(NotifyEventType.SCENE_SWITCH_SCENE, SceneType.Battle);

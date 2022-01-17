@@ -1,10 +1,10 @@
 
-import { _decorator, Component, Node, director, log, sys } from 'cc';
-import { GlobalParams } from '../../Core/Data/GlobalParams';
-import { NotifyEventType } from '../../Core/Data/NotifyEventType';
-import { UIMgr } from '../../Core/Mgr/UIMgr';
-import { DispatcherEvent } from '../../Core/MVC/DispatcherEvent';
-import { Proxy } from '../../Core/MVC/Proxy';
+import { _decorator, Component, Node, director, sys } from 'cc';
+import { GlobalParams } from '../../core/data/GlobalParams';
+import { NotifyEventType } from '../../core/data/NotifyEventType';
+import { UIMgr } from '../../core/mgr/UIMgr';
+import { DispatcherEvent } from '../../core/puremvc/DispatcherEvent';
+import { Proxy } from '../../core/puremvc/Proxy';
 const { ccclass, property } = _decorator;
 
 /**
@@ -33,12 +33,10 @@ export class SceneProxy extends Proxy {
 
     private onSwitchScene = (event: DispatcherEvent): void => {
         let pSceneName: any = event.detail;
-        if (GlobalParams.currentSceneName == pSceneName) return;
-        GlobalParams.currentSceneName = pSceneName;
-        //TODO
-        //  this.getProxy(ModuleType.NETWORK).startClientPing(); 心跳相关
+        if (GlobalParams.sceneName == pSceneName) return;
+        GlobalParams.sceneName = pSceneName;
 
-        UIMgr.showLoading("加载场景中");
+        // UIMgr.showLoading("加载场景中");
         UIMgr.removeAllModules();
 
         if (sys.isNative) {
